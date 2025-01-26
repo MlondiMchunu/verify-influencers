@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import React from "react"
 import MenuBar from "./components/MenuBar";
-import Main from "./components/Main"
+import Main from "./components/BodyComponent"
 import './App.css'
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
     <>
       <div>
         <MenuBar />
-        <main className="p-4">
+        <Main />
+        {/*<main className="p-4">
           <section id="home" className="my-8">
             <h1 className="text-2xl font-bold">Welcome to MyApp</h1>
             <p>Home section content.</p>
@@ -25,6 +26,7 @@ function App() {
             <p>Contact section content.</p>
           </section>
         </main>
+        */}
       </div>
       <div>
 
