@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from "react"
 import MenuBar from "./components/MenuBar";
+import Main from "./components/Main"
 import './App.css'
 
 function App() {
