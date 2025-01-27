@@ -6,7 +6,7 @@ export default function BackToDashboard(){
         <button
             className="fixed top-[60px] bg-transparent hover:bg-gray-800 text-white p-2 rounded-full shadow-md opacity-0 hover:opacity-100 transition-opacity duration-300"
             onClick={()=> window.history.back()}>
-
+                <ArrowLeft className="w-6 h-6"/>
             </button>
     )
 }
