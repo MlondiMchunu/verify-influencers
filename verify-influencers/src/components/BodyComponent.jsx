@@ -20,7 +20,11 @@ export default function BodyComponent(){
                 <p>This is the left column content.</p>
             </div>
 
-
+            {/*Right Column*/}
+            <div className="flex-1">
+                {/*Right Column Content*/}
+                <p>This is the right column content.</p>
+            </div>
             </div>
         </div>
         </>
