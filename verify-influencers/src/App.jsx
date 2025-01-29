@@ -5,6 +5,7 @@ import MenuBar from "./components/MenuBar";
 import Main from "./components/BodyComponent";
 import BackToDashboard from './components/BackToDashboard';
 import './App.css'
+import BodyComponent from './components/BodyComponent';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,8 +15,9 @@ function App() {
       <div>
         <MenuBar />
         <div className="relative top-[50px]">
-        <BackToDashboard/>
-        <Main/>
+          <BackToDashboard />
+
+          <BodyComponent />
         </div>
         {/*<main className="p-4">
           <section id="home" className="my-8">
