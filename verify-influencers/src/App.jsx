@@ -13,8 +13,10 @@ function App() {
     <>
       <div>
         <MenuBar />
+        <div className="relative top-[50px]">
         <BackToDashboard/>
-        <Main />
+        <Main/>
+        </div>
         {/*<main className="p-4">
           <section id="home" className="my-8">
             <h1 className="text-2xl font-bold">Welcome to MyApp</h1>
