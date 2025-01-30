@@ -13,27 +13,31 @@ export default function BodyComponent() {
                 </div>
                 {/*Main content divided into two columns*/}
 
-                <div className="mt-16 flex gap-8">
+                <div className="mt-16 flex gap-2" >
                     {/*Left column*/}
                     <div className="flex-1 flex flex-col items-center">
                         {/*Left column content*/}
 
                         <label className="ml-[10px] w-full max-w-[1040px] min-h-[100px] bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
                             <span className="text-sm font-bold block">Specific Influencer</span>
-                            <span className="text-sm opacity-80 block mt-1">
+                            <span className="text-xs/5 opacity-80 block mt-1">
                                 Research a known health influencer by name
                             </span>
                         </label>
 
-                        <div className="ml-[10px] grid grid-cols-2 gap-1 w-full max-w-[1040px]">
+                        <div className="text-white text-xs/5 opacity-80"><p className="ml-[5px]">Time Range</p></div>
+                        <div className="ml-[10px] grid grid-cols-2 gap-1 w-full max-w-[1040px] opacity-80">
                             {["Last Week", "Last Month", "Last Year", "All Time"].map((label, index) => (
                                 <label
                                     key={index}
-                                    className="w-full min-h-[30px] bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-sm rounded-sm cursor-pointer text-center transition-all duration-300">
+                                    className="w-full min-h-[30px] bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-xs/5 rounded-sm cursor-pointer text-center transition-all duration-300">
                                     {label}
                                 </label>
                             ))}
                         </div>
+
+                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Influencer Name</p></div>
+                        <div></div>
 
                     </div>
 
