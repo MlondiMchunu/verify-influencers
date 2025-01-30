@@ -6,6 +6,8 @@ import Main from "./components/BodyComponent";
 import BackToDashboard from './components/BackToDashboard';
 import './App.css'
 import BodyComponent from './components/BodyComponent';
+import InfluencerNameComponent from './components/InfluencerNameComponent';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +19,7 @@ function App() {
         <div className="relative top-[50px]">
           <BackToDashboard />
 
-          <BodyComponent />
+          <BodyComponent/>
         </div>
         {/*<main className="p-4">
           <section id="home" className="my-8">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Settings } from "lucide-react";
+import InfluencerNameComponent from './InfluencerNameComponent';
 
 
 
