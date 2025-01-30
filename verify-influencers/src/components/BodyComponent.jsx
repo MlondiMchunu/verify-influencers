@@ -1,7 +1,9 @@
 import React from 'react';
 import { Settings } from "lucide-react";
 import InfluencerNameComponent from './InfluencerNameComponent';
-import ClaimsPerInfluencer from './ClaimsPerInfluencer'; 
+import ClaimsPerInfluencer from './ClaimsPerInfluencer';
+import ScientificJournalsComponent from './ScientificJournalsComponent';
+import ProductsPerInfluencer from './ProductsPerInfluencer';
 
 
 
@@ -40,16 +42,39 @@ export default function BodyComponent() {
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Influencer Name</p></div>
                         <div>
-                            <InfluencerNameComponent/>
+                            <InfluencerNameComponent />
                         </div>
-                        <div></div>
 
+                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Claims to Analyze Per Influencer</p></div>
+                        <div>
+                            <ClaimsPerInfluencer />
+                        </div>
+                        <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px]">Recommended: 50-100 claims for comprehensive analysis</p></div>
+
+
+                        {/*
+
+                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Scientific Journals</p></div>
+
+                        <div>
+                            <ScientificJournalsComponent/>
+                        </div>*/}
                     </div>
 
                     {/*Right Column*/}
                     <div className="flex-1">
                         {/*Right Column Content*/}
-                        <p>This is the right column content.</p>
+                        <label className="ml-[10px] w-full max-w-[1040px] min-h-[100px] bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
+                            <span className="text-sm font-bold block">Discover New</span>
+                            <span className="text-xs/5 opacity-80 block mt-1">
+                                Find and analyze new health influencers
+                            </span>
+                        </label>
+
+                        <div className="text-white text-xs/5 opacity-80 mt-[10px]" ><p className="ml-[5px]">Products to Find Per Influencer</p></div>
+                        <div>
+                            <ProductsPerInfluencer />
+                        </div>
                     </div>
                 </div>
             </div>
