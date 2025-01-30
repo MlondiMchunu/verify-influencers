@@ -1,6 +1,7 @@
 import React from 'react';
 import { Settings } from "lucide-react";
 import InfluencerNameComponent from './InfluencerNameComponent';
+import ClaimsPerInfluencer from './ClaimsPerInfluencer'; 
 
 
 
@@ -41,6 +42,7 @@ export default function BodyComponent() {
                         <div>
                             <InfluencerNameComponent/>
                         </div>
+                        <div></div>
 
                     </div>
 
