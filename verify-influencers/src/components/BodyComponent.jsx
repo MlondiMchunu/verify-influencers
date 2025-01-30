@@ -5,6 +5,7 @@ import ClaimsPerInfluencer from './ClaimsPerInfluencer';
 import ScientificJournalsComponent from './ScientificJournalsComponent';
 import ProductsPerInfluencer from './ProductsPerInfluencer';
 import RevenueAnalysisToggle from './RevenueAnalysisToggle';
+import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 
 
 
@@ -82,29 +83,29 @@ export default function BodyComponent() {
                         <div>
                             <div>
                                 <span className="flex flex-row mt-[15px]">
-                                <label className="ml-[10px] w-full max-w-[1040px]  bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm   flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
-                                    <span className="text-sm font-bold block">Include Revenue Analysis</span>
-                                    <span className="text-xs/5 opacity-80 block mt-1">
-                                        Analyze monetization methods and estimate earnings
-                                    </span>
-                                </label>
-                                <div className="py-8">
-                                <RevenueAnalysisToggle />
-                                </div>
+                                    <label className="ml-[10px] w-full max-w-[1040px]  bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm   flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
+                                        <span className="text-sm font-bold block">Include Revenue Analysis</span>
+                                        <span className="text-xs/5 opacity-80 block mt-1">
+                                            Analyze monetization methods and estimate earnings
+                                        </span>
+                                    </label>
+                                    <div className="py-8">
+                                        <RevenueAnalysisToggle isOn={isToggled} onToggle={() => setIsToggled(!isToggled)} />
+                                    </div>
                                 </span>
                             </div>
 
                             <div>
                                 <span className="flex flex-row">
-                                <label className="ml-[10px] w-full max-w-[1040px]  bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm mb-6  flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
-                                    <span className="text-sm font-bold block">Verify with Scientific Journals</span>
-                                    <span className="text-xs/5 opacity-80 block mt-1">
-                                        Cross-reference claims with scientific literature
-                                    </span>
-                                </label>
-                                <div className="py-8">
-                                <RevenueAnalysisToggle />
-                                </div>
+                                    <label className="ml-[10px] w-full max-w-[1040px]  bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm mb-6  flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
+                                        <span className="text-sm font-bold block">Verify with Scientific Journals</span>
+                                        <span className="text-xs/5 opacity-80 block mt-1">
+                                            Cross-reference claims with scientific literature
+                                        </span>
+                                    </label>
+                                    <div className="py-8">
+                                        <VerifyScientificJournalsToggle isOn={isToggled} onToggle={() => setIsToggled(!isToggled)} />
+                                    </div>
                                 </span>
                             </div>
                         </div>
