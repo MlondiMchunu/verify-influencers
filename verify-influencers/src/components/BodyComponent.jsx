@@ -6,7 +6,7 @@ import { Settings } from "lucide-react";
 export default function BodyComponent() {
     return (
         <>
-            <div className="bg-[#3A4752] w-[calc(100vw-100px)] h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center">
+            <div className="bg-[#182130] w-[calc(100vw-100px)] h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center">
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
                     <p className="text-white text-sm text-lg font-bold">Research Configuration</p>
@@ -18,18 +18,18 @@ export default function BodyComponent() {
                     <div className="flex-1 flex flex-col items-center">
                         {/*Left column content*/}
 
-                        <label className="w-full max-w-[1040px] min-h-[100px] bg-[#3a4652] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
+                        <label className="ml-[10px] w-full max-w-[1040px] min-h-[100px] bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
                             <span className="text-sm font-bold block">Specific Influencer</span>
                             <span className="text-sm opacity-80 block mt-1">
                                 Research a known health influencer by name
                             </span>
                         </label>
 
-                        <div className="grid grid-cols-2 gap-1 w-full max-w-[1040px]">
+                        <div className="ml-[10px] grid grid-cols-2 gap-1 w-full max-w-[1040px]">
                             {["Last Week", "Last Month", "Last Year", "All Time"].map((label, index) => (
                                 <label
                                     key={index}
-                                    className="w-full min-h-[30px] bg-[#3a4652] border-1 border-gray-400 text-white flex items-center justify-center text-sm rounded-sm cursor-pointer text-center transition-all duration-300">
+                                    className="w-full min-h-[30px] bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-sm rounded-sm cursor-pointer text-center transition-all duration-300">
                                     {label}
                                 </label>
                             ))}
