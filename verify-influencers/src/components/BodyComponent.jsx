@@ -38,7 +38,9 @@ export default function BodyComponent() {
                         </div>
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Influencer Name</p></div>
-                        <div></div>
+                        <div>
+                            <InfluencerNameComponent/>
+                        </div>
 
                     </div>
 
