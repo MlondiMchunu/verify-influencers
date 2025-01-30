@@ -9,7 +9,7 @@ export default function InfluencerNameComponent() {
         <input
           type="text"
           placeholder="Enter influencer name"
-          className="w-full py-2 pl-10 pr-4 rounded-sm bg-[#182130] text-white text-xs/5 border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full py-2 pl-10 pr-4 rounded-sm bg-[#101727] text-white text-xs/5 border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         
         {/* Search Icon */}

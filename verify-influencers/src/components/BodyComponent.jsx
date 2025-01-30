@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Settings } from "lucide-react";
 import InfluencerNameComponent from './InfluencerNameComponent';
 import ClaimsPerInfluencer from './ClaimsPerInfluencer';
 import ScientificJournalsComponent from './ScientificJournalsComponent';
 import ProductsPerInfluencer from './ProductsPerInfluencer';
+import RevenueAnalysisToggle from './RevenueAnalysisToggle';
 
 
 
 export default function BodyComponent() {
+    const [isToggled, setIsToggled] = useState(false)
     return (
         <>
-            <div className="bg-[#182130] w-[calc(100vw-100px)] h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center">
+            <div className="bg-[#182130] w-[calc(100vw-100px)] h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-evenly">
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
                     <p className="text-white text-sm text-lg font-bold">Research Configuration</p>
@@ -19,10 +21,10 @@ export default function BodyComponent() {
 
                 <div className="mt-16 flex gap-2" >
                     {/*Left column*/}
-                    <div className="flex-1 flex flex-col items-center">
+                    <div className="flex-1 flex flex-col ">
                         {/*Left column content*/}
 
-                        <label className="ml-[10px] w-full max-w-[1040px] min-h-[100px] bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
+                        <label className="ml-[10px] w-full max-w-[1040px]  bg-[#182130] border-1 border-gray-400 text-white px-[2px] py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
                             <span className="text-sm font-bold block">Specific Influencer</span>
                             <span className="text-xs/5 opacity-80 block mt-1">
                                 Research a known health influencer by name
@@ -62,9 +64,9 @@ export default function BodyComponent() {
                     </div>
 
                     {/*Right Column*/}
-                    <div className="flex-1">
+                    <div className="flex-1 flex flex-col ">
                         {/*Right Column Content*/}
-                        <label className="ml-[10px] w-full max-w-[1040px] min-h-[100px] bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
+                        <label className="ml-[10px] w-full max-w-[1040px]  bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
                             <span className="text-sm font-bold block">Discover New</span>
                             <span className="text-xs/5 opacity-80 block mt-1">
                                 Find and analyze new health influencers
@@ -75,6 +77,20 @@ export default function BodyComponent() {
                         <div>
                             <ProductsPerInfluencer />
                         </div>
+                        <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px]">Set to 0 to skip product research</p></div>
+
+                        <div>
+                            <div>
+                                <label className="block w-full p-4 bg-[#182130] border border-white rounded-md text-white text-left">
+                                    <span className="text-sm font-bold block">Include Revenue Analysis</span>
+                                    <span className="text-xs/5 opacity-80 block mt-1">
+                                        Analyze monetization methods and estimate earnings
+                                    </span>
+                                </label>
+                                <RevenueAnalysisToggle/>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

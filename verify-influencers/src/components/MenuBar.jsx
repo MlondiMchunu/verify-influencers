@@ -4,7 +4,7 @@ import {Home,Info,Contact} from "lucide-react";
 
 export default function MenuBar(){
     return(
-        <nav className="fixed top-0 left-0 w-full bg-#101727 text-white shadow-lg">
+        <nav className="flex top-0 left-0 w-full bg-#101727 text-white shadow-lg">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <div className="text-xl font-bold">VerifyInfluencers</div>
         <ul className="flex space-x-6">
