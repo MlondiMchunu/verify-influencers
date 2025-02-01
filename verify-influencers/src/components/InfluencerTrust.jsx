@@ -1,13 +1,13 @@
 import React from "react";
-import {useState} from 'react';
+import { useState } from 'react';
 
 const InfluencerTrust = () => {
 
-    const [actionButton,setActiveButton] = useState(null);
-    
-    const handleClick = (button)=>{
-      setActiveButton(button)
-    }
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleClick = (button) => {
+    setActiveButton(button)
+  }
   return (
 
     <>
@@ -32,20 +32,47 @@ const InfluencerTrust = () => {
             <p className="text-lg font-semibold">--</p>
           </label>
         </div>
+
+
         <div className="w-1/2 mt-6 flex gap-2 text-xs/5">
-          <button className="bg-[#182130] !bg-[#182130] text-white  px-4 py-2 rounded-full whitespace-nowrap opacity-50 active:bg-[#1db885] focus:bg-[#1db885]">
+          <button
+            className={`px-4 py-2 rounded-full whitespace-nowrap 
+          ${activeButton === 'All' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
+          text-white`}
+            onClick={() => handleClick('All')}
+          >
             All
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white  px-4 py-2 rounded-full whitespace-nowrap opacity-50">
+          <button
+            className={`px-4 py-2 rounded-full whitespace-nowrap  
+          ${activeButton === 'Nutrition' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
+          text-white`}
+            onClick={() => handleClick('Nutrition')}
+          >
             Nutrition
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white px-4 py-2 rounded-full whitespace-nowrap opacity-50">
+          <button
+            className={`px-4 py-2 rounded-full whitespace-nowrap 
+          ${activeButton === 'Fitness' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
+          text-white`}
+            onClick={() => handleClick('Fitness')}
+          >
             Fitness
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white px-4 py-2 rounded-full whitespace-nowrap opacity-50">
+          <button
+            className={`px-4 py-2 rounded-full whitespace-nowrap 
+          ${activeButton === 'Medicine' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
+          text-white`}
+            onClick={() => handleClick('Medicine')}
+          >
             Medicine
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white px-4 py-2 rounded-full whitespace-nowrap opacity-50">
+          <button
+            className={`px-4 py-2 rounded-full whitespace-nowrap 
+          ${activeButton === 'Mental Health' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
+          text-white`}
+            onClick={() => handleClick('Mental Health')}
+          >
             Mental Health
           </button>
         </div>
