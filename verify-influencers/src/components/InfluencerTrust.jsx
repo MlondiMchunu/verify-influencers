@@ -12,19 +12,36 @@ const InfluencerTrust = () => {
 
 
                 <div className="flex justify-between mt-4 text-white">
-                    <label className="bg-[#1f2937] px-6 py-3 rounded-md shadow border border-white-50 border-opacity-50">
-                        <p className="text-sm text-gray-400">Active Influencers</p>
+                    <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border border-white-50 border-opacity-50">
+                        <p className="text-xs text-gray-400">Active Influencers</p>
                         <p className="text-lg font-semibold">--</p>
                     </label>
-                    <label className="bg-[#1f2937] px-6 py-3 rounded-md shadow border border-white-50 border-opacity-50">
-                        <p className="text-sm text-gray-400">Claims Verified</p>
+                    <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border border-white-50 border-opacity-50">
+                        <p className="text-xs text-gray-400">Claims Verified</p>
                         <p className="text-lg font-semibold">--</p>
                     </label>
-                    <label className="bg-[#1f2937] px-6 py-3 rounded-md shadow border border-white-50 border-opacity-50">
-                        <p className="text-sm text-gray-400">Average Trust Score</p>
+                    <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border border-white-50 border-opacity-50">
+                        <p className="text-xs text-gray-400">Average Trust Score</p>
                         <p className="text-lg font-semibold">--</p>
                     </label>
                 </div>
+                <div className="flex justify-start space-x-4 mt-6">
+        <button className=" text-white border border-gray-500 px-4 py-2 rounded-xl hover:bg-gray-700 transition">
+          All
+        </button>
+        <button className="bg-[#1f2937] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          Nutrition
+        </button>
+        <button className="bg-[#1f2937] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          Fitness
+        </button>
+        <button className="bg-[#1f2937] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          Medicine
+        </button>
+        <button className="bg-[#1f2937] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          Mental Health
+        </button>
+      </div>
             </div>
         </>
     );
