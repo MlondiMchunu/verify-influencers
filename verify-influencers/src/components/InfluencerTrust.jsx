@@ -3,9 +3,11 @@ import {useState} from 'react';
 
 const InfluencerTrust = () => {
 
-  function CategoryButtons(){
-    const [actionButton,setActiveButton] = useState(null)
-  }
+    const [actionButton,setActiveButton] = useState(null);
+    
+    const handleClick = (button)=>{
+      setActiveButton(button)
+    }
   return (
 
     <>
