@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { ArrowLeft } from "lucide-react"
-import React from "react"
-import MenuBar from "./components/MenuBar";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Main from "./components/Main";
-import BackToDashboard from './components/BackToDashboard';
 import './App.css'
 
 
@@ -12,30 +10,17 @@ function App() {
 
   return (
     <>
-    <Main/>
-     {/*
-      <div>
-        <MenuBar />
-        <div className="relative top-[50px]">
-          <BackToDashboard />
-
-          <BodyComponent/>
-        </div>
-       
-      </div>
-      <div>
-
-      </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-*/}
+    <Router>
+      <Main />
+      <Routes>
+        <Route path="/leaderboard" element={<div>Leaderboard Page</div>} />
+        <Route path="/products" element={<div>Products Page</div>} />
+        <Route path="/monetization" element={<div>Monetization Page</div>} />
+        <Route path="/about" element={<div>About Page</div>} />
+        <Route path="/contact" element={<div>Contact Page</div>} />
+        <Route path="/admin" element={<div>Admin Page</div>} />
+      </Routes>
+      </Router>
     </>
   )
 }

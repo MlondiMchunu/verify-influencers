@@ -1,33 +1,23 @@
 import React from "react";
-import {Home,Info,Contact} from "lucide-react";
+import { Link } from "react-router-dom";
 
+const Menubar = () => {
+  return (
+    <nav className="w-full bg-[#182130] text-white p-4 flex justify-between items-center">
+      {/* Logo or App Name (Optional) */}
+      <div className="text-lg font-bold text-white">VerifyInfluencers</div>
 
-export default function MenuBar(){
-    return(
-        <nav className="flex top-0 left-0 w-full bg-#101727 text-white shadow-lg">
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
-        <div className="text-xl font-bold">VerifyInfluencers</div>
-        <ul className="flex space-x-6">
-          <li className="hover:text-gray-200">
-            <a href="#home" className="flex items-center space-x-1">
-              <Home className="w-5 h-5" />
-              <span>Home</span>
-            </a>
-          </li>
-          <li className="hover:text-gray-200">
-            <a href="#about" className="flex items-center space-x-1">
-              <Info className="w-5 h-5" />
-              <span>About</span>
-            </a>
-          </li>
-          <li className="hover:text-gray-200">
-            <a href="#contact" className="flex items-center space-x-1">
-              <Contact className="w-5 h-5" />
-              <span>Contact</span>
-            </a>
-          </li>
-        </ul>
+      {/* Navigation Links */}
+      <div className="flex space-x-6 text-xs/5 ">
+        <Link to="/leaderboard" className="text-white !text-white hover:text-green-400 transition-colors ">Leaderboard</Link>
+        <Link to="/products" className="text-white !text-white hover:text-green-400 transition-colors">Products</Link>
+        <Link to="/monetization" className="text-white !text-white hover:text-green-400 transition-colors">Monetization</Link>
+        <Link to="/about" className="text-white !text-white hover:text-green-400 transition-colors">About</Link>
+        <Link to="/contact" className="text-white !text-white hover:text-green-400 transition-colors">Contact</Link>
+        <Link to="/admin" className="text-white !text-white hover:text-green-400 transition-colors">Admin</Link>
       </div>
     </nav>
-    )
-}
+  );
+};
+
+export default Menubar;
