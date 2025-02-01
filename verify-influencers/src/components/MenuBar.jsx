@@ -4,10 +4,11 @@ import { Shield } from "lucide-react";
 
 const Menubar = () => {
   return (
-    <nav className="w-full bg-[#182130] text-white p-4 flex justify-between items-center">
+    <nav className="w-full bg-[#182130] p-4 flex flex-wrap items-center justify-between">
       {/* Logo or App Name (Optional) */}
-      <div className="flex items-center space-x-2 text-[#10bb80] text-lg font-bold">
-        <Shield />
+      <div className="flex items-center space-x-2 text-[#10bb80] text-sm font-bold">
+        <Shield size={20} className="text-[#10bb80]"/>
+        <span>VerifyInfluencers</span>
       </div>
 
       {/* Navigation Links */}
