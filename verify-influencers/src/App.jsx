@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { ArrowLeft } from "lucide-react"
 import React from "react"
 import MenuBar from "./components/MenuBar";
-import Main from "./components/BodyComponent";
+import Main from "./components/Main";
 import BackToDashboard from './components/BackToDashboard';
 import './App.css'
-import BodyComponent from './components/BodyComponent';
-import InfluencerNameComponent from './components/InfluencerNameComponent';
 
 
 function App() {
@@ -14,6 +12,8 @@ function App() {
 
   return (
     <>
+    <Main/>
+     {/*
       <div>
         <MenuBar />
         <div className="relative top-[50px]">
@@ -21,21 +21,7 @@ function App() {
 
           <BodyComponent/>
         </div>
-        {/*<main className="p-4">
-          <section id="home" className="my-8">
-            <h1 className="text-2xl font-bold">Welcome to MyApp</h1>
-            <p>Home section content.</p>
-          </section>
-          <section id="about" className="my-8">
-            <h2 className="text-xl font-bold">About Us</h2>
-            <p>About section content.</p>
-          </section>
-          <section id="contact" className="my-8">
-            <h2 className="text-xl font-bold">Contact Us</h2>
-            <p>Contact section content.</p>
-          </section>
-        </main>
-        */}
+       
       </div>
       <div>
 
@@ -49,6 +35,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+*/}
     </>
   )
 }
