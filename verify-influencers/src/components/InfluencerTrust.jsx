@@ -26,19 +26,19 @@ const InfluencerTrust = () => {
           </label>
         </div>
         <div className="w-1/2 mt-6 flex gap-2 text-xs/5">
-          <button className="bg-[#182130] !bg-[#182130] text-white border border-white-50 px-4 py-2 rounded-md">
+          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-600 px-4 py-2 rounded-full whitespace-nowrap opacity-50">
             All
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-600 px-4 py-2 rounded-md text-xs">
+          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-600 px-4 py-2 rounded-full whitespace-nowrap opacity-50">
             Nutrition
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-600 px-4 py-2 rounded-full whitespace-nowrap opacity-50">
             Fitness
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-600 px-4 py-2 rounded-full whitespace-nowrap opacity-50">
             Medicine
           </button>
-          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-700 transition">
+          <button className="bg-[#182130] !bg-[#182130] text-white border border-gray-600 px-4 py-2 rounded-full whitespace-nowrap opacity-50">
             Mental Health
           </button>
         </div>
