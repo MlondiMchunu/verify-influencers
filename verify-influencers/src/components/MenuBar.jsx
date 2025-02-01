@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Shield } from "lucide-react";
 
 const Menubar = () => {
   return (
     <nav className="w-full bg-[#182130] text-white p-4 flex justify-between items-center">
       {/* Logo or App Name (Optional) */}
-      <div className="text-lg font-bold text-white">VerifyInfluencers</div>
+      <div className="flex items-center space-x-2 text-[#10bb80] text-lg font-bold">
+        <Shield />
+      </div>
 
       {/* Navigation Links */}
       <div className="flex space-x-6 text-xs/5 ">
