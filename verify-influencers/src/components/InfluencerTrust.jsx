@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 
-const influencerData = [
+const influencers = [
   { rank: 1, name: "Dr. John Doe", category: "Nutrition", trustScore: 85, trend: "+2%", followers: "1.2M", verifiedClaims: 45 },
   { rank: 2, name: "Jane Smith", category: "Fitness", trustScore: 78, trend: "-1%", followers: "900K", verifiedClaims: 38 },
   { rank: 3, name: "Alex Carter", category: "Medicine", trustScore: 92, trend: "+5%", followers: "2.5M", verifiedClaims: 60 },
@@ -21,11 +21,17 @@ const InfluencerTrust = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   //function to handle category filter
-  /*const filteredInfluencers = activeFilter === "All"
+  const filteredInfluencers = activeFilter === "All"
     ? influencers
     : influencers.filter(influencer => influencer.category === activeFilter);
 
-*/
+  var totalInfluencers = 0;
+  influencers.forEach(arr => {
+    totalInfluencers++
+  })
+
+  var avTrustScore = 0;
+  console.log("Total no of influencers : ", totalInfluencers);
 
   return (
 
@@ -38,27 +44,27 @@ const InfluencerTrust = () => {
 
 
         <div className="flex justify-between mt-4 text-white ">
-          <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border border-white-50 border-opacity-50">
+          <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
+            <p className="text-lg font-semibold">{totalInfluencers}</p>
             <p className="text-xs text-gray-400">Active Influencers</p>
-            <p className="text-lg font-semibold">--</p>
           </label>
-          <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border border-white-50 border-opacity-50">
+          <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
+            <p className="text-lg font-semibold">--</p>
             <p className="text-xs text-gray-400">Claims Verified</p>
-            <p className="text-lg font-semibold">--</p>
           </label>
-          <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border border-white-50 border-opacity-50">
-            <p className="text-xs text-gray-400">Average Trust Score</p>
+          <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
             <p className="text-lg font-semibold">--</p>
+            <p className="text-xs text-gray-400">Average Trust Score</p>
           </label>
         </div>
 
 
-        <div className="w-1/2 mt-6 flex gap-2 text-xs/5">
+        <div className="w-1/2 mt-6 flex gap-2 text-xs/5 ">
 
-          {["All", "Nutrition,", "Fitness", "Medicine", "Mental Health"].map(category => (
+          {["All", "Nutrition", "Fitness", "Medicine", "Mental Health"].map(category => (
             <button
               key={category}
-              className={`px-4 py-2 rounded-full border border-gray-600 whitespace-nowrap transition-all duration-300 !bg-[#182130] ${activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
+              className={`px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 !bg-[#182130] opacity-80 ${activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
                 }`}
               onClick={() => setActiveFilter(category)}
             >
@@ -114,17 +120,33 @@ const InfluencerTrust = () => {
         <div className="mt-6 overflow-x-auti">
           <table className="w-full border-collapse border border-gray-600">
             {/*Table Head*/}
-            <thead className="bg-[#182130] text-white">
-            <tr>
-              <th className="border border-gray-600 px-4 py-2">Rank</th>
-              <th className="border border-gray-600 px-4 py-2">Influencer</th>
-              <th className="border border-gray-600 px-4 py-2">Category</th>
-              <th className="border border-gray-600 px-4 py-2">Trust Score</th>
-              <th className="border border-gray-600 px-4 py-2">Trend</th>
-              <th className="border border-gray-600 px-4 py-2">Followers</th>
-              <th className="border border-gray-600 px-4 py-2">Verified Claims</th>
-            </tr>
+            <thead className="bg-[#182130] text-white text-xs/5 opacity-70">
+              <tr>
+                <th className="border border-gray-600 px-4 py-2">Rank</th>
+                <th className="border border-gray-600 px-4 py-2">Influencer</th>
+                <th className="border border-gray-600 px-4 py-2">Category</th>
+                <th className="border border-gray-600 px-4 py-2">Trust Score</th>
+                <th className="border border-gray-600 px-4 py-2">Trend</th>
+                <th className="border border-gray-600 px-4 py-2">Followers</th>
+                <th className="border border-gray-600 px-4 py-2">Verified Claims</th>
+              </tr>
             </thead>
+
+            {/*Table Body*/}
+            <tbody className="text-gray-200">
+              {filteredInfluencers.map((influencer) => (
+                <tr key={influencer.id} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5">
+                  <td className="border border-gray-600 px-4 py-2">{influencer.rank}</td>
+                  <td className="border border-gray-600 px-4 py-2">{influencer.name}</td>
+                  <td className="border border-gray-600 px-4 py-2">{influencer.category}</td>
+                  <td className="border border-gray-600 px-4 py-2">{influencer.trustScore}</td>
+                  <td className="border border-gray-600 px-4 py-2">{influencer.trend}</td>
+                  <td className="border border-gray-600 px-4 py-2">{influencer.followers}</td>
+                  <td className="border border-gray-600 px-4 py-2">{influencer.verifiedClaims}</td>
+
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
 
