@@ -1,6 +1,14 @@
 import React from "react";
 import { useState } from 'react';
 
+const influencerData = [
+  { rank: 1, name: "Dr. John Doe", trustScore: 85, trend: "+2%", followers: "1.2M", verifiedClaims: 45, filter: "Nutrition" },
+  { rank: 2, name: "Jane Smith", trustScore: 78, trend: "-1%", followers: "900K", verifiedClaims: 38, filter: "Fitness" },
+  { rank: 3, name: "Alex Carter", trustScore: 92, trend: "+5%", followers: "2.5M", verifiedClaims: 60, filter: "Medicine" },
+  { rank: 4, name: "Emily White", trustScore: 80, trend: "+3%", followers: "750K", verifiedClaims: 42, filter: "Mental Health" },
+  { rank: 5, name: "Dr. Brian Green", trustScore: 74, trend: "0%", followers: "500K", verifiedClaims: 29, filter: "Nutrition" },
+]
+
 const InfluencerTrust = () => {
 
   const [activeButton, setActiveButton] = useState(null);
@@ -8,6 +16,7 @@ const InfluencerTrust = () => {
   const handleClick = (button) => {
     setActiveButton(button)
   }
+
   return (
 
     <>
