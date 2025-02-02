@@ -29,9 +29,20 @@ const InfluencerTrust = () => {
   influencers.forEach(arr => {
     totalInfluencers++
   })
-
-  var avTrustScore = 0;
   console.log("Total no of influencers : ", totalInfluencers);
+
+
+
+  var avTrustScore ;
+  var trustScoreTot = 0;
+  influencers.forEach(avg=>{
+    trustScoreTot += avg.trustScore
+  })
+  avTrustScore = trustScoreTot/ totalInfluencers;
+  console.log("TrustScore total: ",trustScoreTot)
+  console.log("TrustScore total: ",avTrustScore)
+
+
 
   return (
 
