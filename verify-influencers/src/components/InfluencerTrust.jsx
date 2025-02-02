@@ -1,4 +1,5 @@
 import React from "react";
+import { CircleCheckBig, Users } from "lucide-react";
 import { useState } from 'react';
 
 const influencers = [
@@ -56,12 +57,26 @@ const InfluencerTrust = () => {
 
         <div className="flex justify-between mt-4 text-white ">
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-            <p className="text-lg font-semibold">{totalInfluencers}</p>
-            <p className="text-xs text-gray-400">Active Influencers</p>
+          <div className="flex col-2 gap-2">
+              <span>
+                <Users size={20} className="text-[#10b97f] mt-3" />
+              </span>
+              <span>
+                <p className="text-lg font-semibold">{totalInfluencers}</p>
+                <p className="text-xs text-gray-400">Active Influencers</p>
+              </span>
+            </div>
           </label>
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-            <p className="text-lg font-semibold">--</p>
-            <p className="text-xs text-gray-400">Claims Verified</p>
+            <div className="flex col-2 gap-2">
+              <span>
+                <CircleCheckBig size={20} className="text-[#10b97f] mt-3" />
+              </span>
+              <span>
+                <p className="text-lg font-semibold">--</p>
+                <p className="text-xs text-gray-400">Claims Verified</p>
+              </span>
+            </div>
           </label>
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
             <p className="text-lg font-semibold">{avTrustScore}%</p>
