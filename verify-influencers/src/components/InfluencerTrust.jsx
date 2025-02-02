@@ -64,7 +64,7 @@ const InfluencerTrust = () => {
             <p className="text-xs text-gray-400">Claims Verified</p>
           </label>
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-            <p className="text-lg font-semibold">{avTrustScore}</p>
+            <p className="text-lg font-semibold">{avTrustScore}%</p>
             <p className="text-xs text-gray-400">Average Trust Score</p>
           </label>
         </div>
@@ -133,27 +133,27 @@ const InfluencerTrust = () => {
             {/*Table Head*/}
             <thead className="bg-[#182130] text-white text-xs/5 opacity-70">
               <tr>
-                <th className="border border-gray-600 px-4 py-2">Rank</th>
-                <th className="border border-gray-600 px-4 py-2">Influencer</th>
-                <th className="border border-gray-600 px-4 py-2">Category</th>
-                <th className="border border-gray-600 px-4 py-2">Trust Score</th>
-                <th className="border border-gray-600 px-4 py-2">Trend</th>
-                <th className="border border-gray-600 px-4 py-2">Followers</th>
-                <th className="border border-gray-600 px-4 py-2">Verified Claims</th>
+                <th className=" border-gray-600 px-4 py-2">Rank</th>
+                <th className=" border-gray-600 px-4 py-2">Influencer</th>
+                <th className=" border-gray-600 px-4 py-2">Category</th>
+                <th className="border-gray-600 px-4 py-2">Trust Score</th>
+                <th className=" border-gray-600 px-4 py-2">Trend</th>
+                <th className=" border-gray-600 px-4 py-2">Followers</th>
+                <th className=" border-gray-600 px-4 py-2">Verified Claims</th>
               </tr>
             </thead>
 
             {/*Table Body*/}
             <tbody className="text-gray-200">
               {filteredInfluencers.map((influencer) => (
-                <tr key={influencer.id} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5">
-                  <td className="border border-gray-600 px-4 py-2">{influencer.rank}</td>
-                  <td className="border border-gray-600 px-4 py-2">{influencer.name}</td>
-                  <td className="border border-gray-600 px-4 py-2">{influencer.category}</td>
-                  <td className="border border-gray-600 px-4 py-2">{influencer.trustScore}</td>
-                  <td className="border border-gray-600 px-4 py-2">{influencer.trend}</td>
-                  <td className="border border-gray-600 px-4 py-2">{influencer.followers}</td>
-                  <td className="border border-gray-600 px-4 py-2">{influencer.verifiedClaims}</td>
+                <tr key={influencer.id} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5 bg-[#182130]">
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.rank}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.name}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.category}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.trustScore}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.trend}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.followers}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{influencer.verifiedClaims}</td>
 
                 </tr>
               ))}
