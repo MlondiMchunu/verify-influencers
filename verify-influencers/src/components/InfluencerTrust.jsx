@@ -33,14 +33,14 @@ const InfluencerTrust = () => {
 
 
 
-  var avTrustScore ;
+  var avTrustScore;
   var trustScoreTot = 0;
-  influencers.forEach(avg=>{
+  influencers.forEach(avg => {
     trustScoreTot += avg.trustScore
   })
-  avTrustScore = trustScoreTot/ totalInfluencers;
-  console.log("TrustScore total: ",trustScoreTot)
-  console.log("TrustScore total: ",avTrustScore)
+  avTrustScore = trustScoreTot / totalInfluencers;
+  // console.log("TrustScore total: ",trustScoreTot)
+  //console.log("TrustScore total: ",avTrustScore)
 
 
 
@@ -64,7 +64,7 @@ const InfluencerTrust = () => {
             <p className="text-xs text-gray-400">Claims Verified</p>
           </label>
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-            <p className="text-lg font-semibold">--</p>
+            <p className="text-lg font-semibold">{avTrustScore}</p>
             <p className="text-xs text-gray-400">Average Trust Score</p>
           </label>
         </div>
