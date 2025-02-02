@@ -1,6 +1,6 @@
 import React from "react";
-import { CircleCheckBig, Users } from "lucide-react";
-import { useState } from 'react';
+import { CircleCheckBig, Users, ChartColumn } from "lucide-react";
+import { useState, useEffect } from 'react';
 
 const influencers = [
   { rank: 1, name: "Dr. John Doe", category: "Nutrition", trustScore: 85, trend: "+2%", followers: "1.2M", verifiedClaims: 45 },
@@ -34,12 +34,12 @@ const InfluencerTrust = () => {
 
 
 
-  var avTrustScore;
+  var avgTrustScore;
   var trustScoreTot = 0;
   influencers.forEach(avg => {
     trustScoreTot += avg.trustScore
   })
-  avTrustScore = trustScoreTot / totalInfluencers;
+  avgTrustScore = trustScoreTot / totalInfluencers;
   // console.log("TrustScore total: ",trustScoreTot)
   //console.log("TrustScore total: ",avTrustScore)
 
@@ -79,8 +79,15 @@ const InfluencerTrust = () => {
             </div>
           </label>
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-            <p className="text-lg font-semibold">{avTrustScore}%</p>
-            <p className="text-xs text-gray-400">Average Trust Score</p>
+          <div className="flex col-2 gap-2">
+              <span>
+                <ChartColumn size={20} className="text-[#10b97f] mt-3" />
+              </span>
+              <span>
+                <p className="text-lg font-semibold">{avgTrustScore}%</p>
+                <p className="text-xs text-gray-400">Average Trust Score</p>
+              </span>
+            </div>
           </label>
         </div>
 
