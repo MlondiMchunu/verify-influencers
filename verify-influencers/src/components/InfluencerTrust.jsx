@@ -20,7 +20,12 @@ const InfluencerTrust = () => {
   //state for active filter
   const [activeFilter, setActiveFilter] = useState("All");
 
+  //function to handle category filter
+  /*const filteredInfluencers = activeFilter === "All"
+    ? influencers
+    : influencers.filter(influencer => influencer.category === activeFilter);
 
+*/
 
   return (
 
@@ -50,7 +55,19 @@ const InfluencerTrust = () => {
 
         <div className="w-1/2 mt-6 flex gap-2 text-xs/5">
 
-          {["All", "Nutrition,"]}
+          {["All", "Nutrition,","Fitness","Medicine","Mental Health"].map(category=>(
+            <button
+            key={category}
+            className={`px-4 py-2 rounded-full border border-gray-600 whitespace-nowrap transition-all duration-300 !bg-[#182130] ${
+              activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
+            }`}
+            onClick={() => setActiveFilter(category)}
+          >
+            {category}
+          </button>
+          ))}
+
+          {/**
           <button
             className={`px-4 py-2 rounded-full whitespace-nowrap 
           ${activeButton === 'All' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
@@ -91,6 +108,7 @@ const InfluencerTrust = () => {
           >
             Mental Health
           </button>
+          **/}
         </div>
       </div>
     </>
