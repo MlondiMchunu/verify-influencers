@@ -17,10 +17,10 @@ const InfluencerTrust = () => {
     setActiveButton(button)
   }
 
+  //state for active filter
   const [activeFilter, setActiveFilter] = useState("All");
 
-  //Filter table data based on category selection
-  const filteredData = activeFilter === "All" ? influencerData : influencerData.filter(item => item.filter === activeFilter);
+
 
   return (
 
