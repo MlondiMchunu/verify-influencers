@@ -55,16 +55,15 @@ const InfluencerTrust = () => {
 
         <div className="w-1/2 mt-6 flex gap-2 text-xs/5">
 
-          {["All", "Nutrition,","Fitness","Medicine","Mental Health"].map(category=>(
+          {["All", "Nutrition,", "Fitness", "Medicine", "Mental Health"].map(category => (
             <button
-            key={category}
-            className={`px-4 py-2 rounded-full border border-gray-600 whitespace-nowrap transition-all duration-300 !bg-[#182130] ${
-              activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
-            }`}
-            onClick={() => setActiveFilter(category)}
-          >
-            {category}
-          </button>
+              key={category}
+              className={`px-4 py-2 rounded-full border border-gray-600 whitespace-nowrap transition-all duration-300 !bg-[#182130] ${activeFilter === category ? "bg-[#1db885] !bg-[#1db885] text-white" : "bg-[#182130] text-white"
+                }`}
+              onClick={() => setActiveFilter(category)}
+            >
+              {category}
+            </button>
           ))}
 
           {/**
@@ -110,6 +109,25 @@ const InfluencerTrust = () => {
           </button>
           **/}
         </div>
+
+        {/*Influencer Table */}
+        <div className="mt-6 overflow-x-auti">
+          <table className="w-full border-collapse border border-gray-600">
+            {/*Table Head*/}
+            <thead className="bg-[#182130] text-white">
+            <tr>
+              <th className="border border-gray-600 px-4 py-2">Rank</th>
+              <th className="border border-gray-600 px-4 py-2">Influencer</th>
+              <th className="border border-gray-600 px-4 py-2">Category</th>
+              <th className="border border-gray-600 px-4 py-2">Trust Score</th>
+              <th className="border border-gray-600 px-4 py-2">Trend</th>
+              <th className="border border-gray-600 px-4 py-2">Followers</th>
+              <th className="border border-gray-600 px-4 py-2">Verified Claims</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+
       </div>
     </>
   );
