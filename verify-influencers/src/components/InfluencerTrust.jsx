@@ -7,7 +7,7 @@ const influencerData = [
   { rank: 3, name: "Alex Carter", trustScore: 92, trend: "+5%", followers: "2.5M", verifiedClaims: 60, filter: "Medicine" },
   { rank: 4, name: "Emily White", trustScore: 80, trend: "+3%", followers: "750K", verifiedClaims: 42, filter: "Mental Health" },
   { rank: 5, name: "Dr. Brian Green", trustScore: 74, trend: "0%", followers: "500K", verifiedClaims: 29, filter: "Nutrition" },
-]
+];
 
 const InfluencerTrust = () => {
 
@@ -16,6 +16,8 @@ const InfluencerTrust = () => {
   const handleClick = (button) => {
     setActiveButton(button)
   }
+
+  const [activeFilter, setActiveFilter] = useState("All");
 
   return (
 
