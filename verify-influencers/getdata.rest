@@ -1,9 +1,9 @@
 POST https://api.openai.com/v1/chat/completions
 Content-Type: application/json
-Authorization: Bearer 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
+Authorization: Bearer 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
 
 {
-  "model": "gpt-3.5-turbo",
+  "model": "gpt-4o-mini",
   "messages": [
     { "role": "system", "content": "You are a helpful assistant." },
     { "role": "user", "content": "Hello!" }

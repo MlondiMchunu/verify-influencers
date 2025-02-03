@@ -6,14 +6,7 @@ import { useState, useEffect } from 'react';
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
 
-/*const influencers = [
-  { rank: 1, name: "Dr. John Doe", category: "Nutrition", trustScore: 85, trend: "+2%", followers: "1.2M", verifiedClaims: 45 },
-  { rank: 2, name: "Jane Smith", category: "Fitness", trustScore: 78, trend: "-1%", followers: "900K", verifiedClaims: 38 },
-  { rank: 3, name: "Alex Carter", category: "Medicine", trustScore: 92, trend: "+5%", followers: "2.5M", verifiedClaims: 60 },
-  { rank: 4, name: "Emily White", category: "Mental Health", trustScore: 80, trend: "+3%", followers: "750K", verifiedClaims: 42 },
-  { rank: 5, name: "Dr. Brian Green", category: "Nutrition", trustScore: 74, trend: "0%", followers: "500K", verifiedClaims: 29 },
-];
-*/
+
 
 console.log("API KEY:", import.meta.env.VITE_API_KEY);
 console.log("API URL:", import.meta.env.VITE_API_URL);
@@ -44,9 +37,9 @@ const InfluencerTrust = () => {
               Authorization:`Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-              model:"gpt-4",
+              model:"gpt-4o-mini",
               messages:[{role:"user",content:prompt}],
-              max_tokens:100
+              max_tokens:1000
             }),
           });
 
@@ -57,7 +50,11 @@ const InfluencerTrust = () => {
 
           const data = await response.json();
           console.log("ChatGPT Response: ",data)
-          return data;
+
+          if(!data.choices || data.choices.length === 0){
+            throw new Error("Invalid API response: choices array is missing.");
+          }
+        
 
           //Calculate Stats
           const totalInfluencers = data.length;
@@ -70,6 +67,8 @@ const InfluencerTrust = () => {
           verifiedClaims,
           averageTrustScore: averageTrustScore.toFixed(1),
         });
+        
+        return data;
 
         }catch(error){
           console.error("Error fetching influencer data:",error);
@@ -89,24 +88,7 @@ const InfluencerTrust = () => {
     ? influencers
     : influencers.filter(influencer => influencer.category === activeFilter);
 
-  /*var totalInfluencers = 0;
-  influencers.forEach(arr => {
-    totalInfluencers++
-  })
-  console.log("Total no of influencers : ", totalInfluencers);
-
-
-
-  var avgTrustScore;
-  var trustScoreTot = 0;
-  influencers.forEach(avg => {
-    trustScoreTot += avg.trustScore
-  })
-  avgTrustScore = trustScoreTot / totalInfluencers;
-  // console.log("TrustScore total: ",trustScoreTot)
-  //console.log("TrustScore total: ",avTrustScore)
-
-*/
+ 
 
   return (
 
@@ -168,48 +150,7 @@ const InfluencerTrust = () => {
             </button>
           ))}
 
-          {/**
-          <button
-            className={`px-4 py-2 rounded-full whitespace-nowrap 
-          ${activeButton === 'All' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
-          text-white`}
-            onClick={() => handleClick('All')}
-          >
-            All
-          </button>
-          <button
-            className={`px-4 py-2 rounded-full whitespace-nowrap  
-          ${activeButton === 'Nutrition' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
-          text-white`}
-            onClick={() => handleClick('Nutrition')}
-          >
-            Nutrition
-          </button>
-          <button
-            className={`px-4 py-2 rounded-full whitespace-nowrap 
-          ${activeButton === 'Fitness' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
-          text-white`}
-            onClick={() => handleClick('Fitness')}
-          >
-            Fitness
-          </button>
-          <button
-            className={`px-4 py-2 rounded-full whitespace-nowrap 
-          ${activeButton === 'Medicine' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
-          text-white`}
-            onClick={() => handleClick('Medicine')}
-          >
-            Medicine
-          </button>
-          <button
-            className={`px-4 py-2 rounded-full whitespace-nowrap 
-          ${activeButton === 'Mental Health' ? '!bg-[#1db885]' : '!bg-[#182130]'} 
-          text-white`}
-            onClick={() => handleClick('Mental Health')}
-          >
-            Mental Health
-          </button>
-          **/}
+        
         </div>
 
         {/*Influencer Table */}
