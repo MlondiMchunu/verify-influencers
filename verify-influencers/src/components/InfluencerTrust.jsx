@@ -1,25 +1,44 @@
 import React from "react";
 import { CircleCheckBig, Users, ChartColumn } from "lucide-react";
 import { useState, useEffect } from 'react';
+import env from "react-dotenv";
 
-const influencers = [
+const api = process.env.VITE_API_KEY
+
+/*const influencers = [
   { rank: 1, name: "Dr. John Doe", category: "Nutrition", trustScore: 85, trend: "+2%", followers: "1.2M", verifiedClaims: 45 },
   { rank: 2, name: "Jane Smith", category: "Fitness", trustScore: 78, trend: "-1%", followers: "900K", verifiedClaims: 38 },
   { rank: 3, name: "Alex Carter", category: "Medicine", trustScore: 92, trend: "+5%", followers: "2.5M", verifiedClaims: 60 },
   { rank: 4, name: "Emily White", category: "Mental Health", trustScore: 80, trend: "+3%", followers: "750K", verifiedClaims: 42 },
   { rank: 5, name: "Dr. Brian Green", category: "Nutrition", trustScore: 74, trend: "0%", followers: "500K", verifiedClaims: 29 },
 ];
+*/
 
 const InfluencerTrust = () => {
 
-  const [activeButton, setActiveButton] = useState(null);
-
-  const handleClick = (button) => {
+  //const [activeButton, setActiveButton] = useState(null);
+/*const handleClick = (button) => {
     setActiveButton(button)
-  }
+  }*/
 
   //state for active filter
   const [activeFilter, setActiveFilter] = useState("All");
+  const[influencers, setInfluencers] = useState([]);
+    const [stats,setStats] = useState({
+      totalInfluencers:0,
+      verifiedClaims:0,
+      averageTrustScore:0,
+    });
+
+    useEffect(()=>{
+      async function fetchData(){
+        try{
+          const response = await fetch("");
+          const data = await response.json();
+        }
+      }
+    })
+  
 
   //function to handle category filter
   const filteredInfluencers = activeFilter === "All"
