@@ -14,106 +14,115 @@ console.log("API URL:", import.meta.env.VITE_API_URL);
 const InfluencerTrust = () => {
 
   //const [activeButton, setActiveButton] = useState(null);
-/*const handleClick = (button) => {
-    setActiveButton(button)
-  }*/
+  /*const handleClick = (button) => {
+      setActiveButton(button)
+    }*/
 
   //state for active filter
   const [activeFilter, setActiveFilter] = useState("All");
-  const[influencers, setInfluencers] = useState([]);
-    const [stats,setStats] = useState({
-      totalInfluencers:0,
-      verifiedClaims:0,
-      averageTrustScore:0,
-    });
+  const [influencers, setInfluencers] = useState([]);
+  const [stats, setStats] = useState({
+    totalInfluencers: 0,
+    verifiedClaims: 0,
+    averageTrustScore: 0,
+  });
 
-    useEffect(()=>{
-      async function fetchData(prompt){
-        try{
-          const response = await fetch(apiUrl,{
-            method:"POST",
-            headers:{
-              "Content-Type":"application/json",
-              Authorization:`Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-              model:"gpt-4o-mini",
-              messages:[{role:"user",content:prompt}],
-              max_tokens:1000
-            }),
-          });
+  useEffect(() => {
+    async function fetchData(prompt) {
+      try {
+        const response = await fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-4o-mini",
+            messages: [{ role: "user", content: prompt }],
+            max_tokens: 1000
+          }),
+        });
 
-          //Check if response is JSON
-          if(!response.ok){
-            throw new Error(`API error:${response.status} ${response.statusText}`);
+        //Check if response is JSON
+        if (!response.ok) {
+          throw new Error(`API error:${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("ChatGPT Response: ", data)
+
+        if (!data.choices || data.choices.length === 0 || !data.choices[0].message) {
+          throw new Error("Invalid API response structure.");
+        }
+
+        const content = data.choices[0].message.content.trim();
+        console.log("AI Response Content:", content);
+
+        let influencersData;
+        try {
+          influencersData = JSON.parse(content);
+        } catch (parseError) {
+          console.warn("AI response is not valid JSON. Trying to extract JSON...");
+          const match = content.match(/```json([\s\S]*?)```/);
+          if (match) {
+            try {
+              influencersData = JSON.parse(match[1]);
+            } catch (nestedError) {
+              console.error("Error parsing extracted JSON:", nestedError);
+              return;
+            }
+          } else {
+            console.error("Could not find JSON in AI response.");
+            return;
           }
 
-          const data = await response.json();
-          console.log("ChatGPT Response: ",data)
+        }
 
-          if(!data.choices || data.choices.length === 0 || !data.choices[0].message){
-            throw new Error("Invalid API response structure.");
-          }
+        if (Array.isArray(data)) {
+          influencersData = data;
+        }
+        else if (typeof data === "object" && data.influencers) {
+          influencersData = data.influencers;
+        }
+        else {
+          console.error("API response does not contain an array:", data);
+          return;
+        }
 
-          const content = data.choices[0].message.content.trim();
-          console.log("AI Response Content:", content);
-        
-          let influencersData;
-          try{
-            influencersData = JSON.parse(content);
-          }catch(parseError){
-console.warn("AI response is not valid JSON. Trying to extract JSON...");
-const match = content.match(/```json([\s\S]*?)```/);
-if(match){
-  try{
-    influencersData = JSON.parse(match[1]);
-  }catch(nestedError){
-    console.error("Error parsing extracted JSON:",nestedError);
-    return;
-  }
-}else{
-  console.error("Could not find JSON in AI response.");
-  return;
-}
+        //Calculate Stats
+        const totalInfluencers = influencersData.length;
+        const verifiedClaims = influencersData.reduce((acc, influencer) => acc + influencer.verifiedClaims || 0);
+        const averageTrustScore = influencersData.reduce((acc, influencer) => acc + influencer.trustScore || 0) / totalInfluencers;
 
-}
-
-          if(!Array.isArray(influencersData)){
-            throw new Error("API did not return an array of influencers.");
-          }
-
-          //Calculate Stats
-          const totalInfluencers = influencersData.length;
-          const verifiedClaims = influencersData.reduce((acc,influencer)=>acc + influencer.verifiedClaims || 0);
-          const averageTrustScore = influencersData.reduce((acc, influencer)=> acc + influencer.trustScore || 0)/totalInfluencers;
-        
         setInfluencers(influencersData);
         setStats({
           totalInfluencers,
           verifiedClaims,
           averageTrustScore: averageTrustScore.toFixed(1),
         });
-        
 
-        }catch(error){
-          console.error("Error fetching influencer data:",error);
-          return null;
-        }
+
+      } catch (error) {
+        console.error("Error fetching influencer data:", error);
+        return null;
       }
-      fetchData("Give me the latest health trends in a valid JSON format with an array of influencers. Each influencer should have 'name', 'category', 'trustScore', 'trend', 'followers', and 'verifiedClaims'.").then((data)=>{
-        if(data){
-          console.log("AI Response:",data.choices[0].message.content);
-        }
-      });
-    },[]);
-  
+    }
+    fetchData(`Provide the latest health influencer trends in valid JSON format. 
+Return an array under the key "influencers" where each influencer has the following fields: 
+"name", "category", "trustScore", "trend", "followers", and "verifiedClaims".`).then((data) => {
+      if (data) {
+        console.log("AI Response:", data.choices[0].message.content);
+      }
+    });
+  }, []);
+
 
   //function to handle category filter
   const filteredInfluencers = activeFilter === "All"
     ? influencers
     : influencers.filter(influencer => influencer.category === activeFilter);
 
- 
+
 
   return (
 
@@ -127,7 +136,7 @@ if(match){
 
         <div className="flex justify-between mt-4 text-white ">
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-          <div className="flex col-2 gap-2">
+            <div className="flex col-2 gap-2">
               <span>
                 <Users size={20} className="text-[#10b97f] mt-3" />
               </span>
@@ -149,7 +158,7 @@ if(match){
             </div>
           </label>
           <label className="bg-[#1f2937] px-6 py-3 rounded-sm shadow border-collapse border border-gray-600 border-opacity-50">
-          <div className="flex col-2 gap-2">
+            <div className="flex col-2 gap-2">
               <span>
                 <ChartColumn size={20} className="text-[#10b97f] mt-3" />
               </span>
@@ -175,7 +184,7 @@ if(match){
             </button>
           ))}
 
-        
+
         </div>
 
         {/*Influencer Table */}
@@ -196,7 +205,7 @@ if(match){
 
             {/*Table Body*/}
             <tbody className="text-gray-200">
-              {filteredInfluencers.map((influencer,index) => (
+              {filteredInfluencers.map((influencer, index) => (
                 <tr key={influencer.id} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5 bg-[#182130]">
                   <td className="border-b border-gray-600 px-4 py-2">{index + 1}</td>
                   <td className="border-b border-gray-600 px-4 py-2">{influencer.name}</td>
