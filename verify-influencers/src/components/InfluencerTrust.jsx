@@ -35,6 +35,11 @@ const InfluencerTrust = () => {
         try{
           const response = await fetch("");
           const data = await response.json();
+
+          //Calculate Stats
+          const totalInfluencers = data.length;
+          const verifiedClaims = data.reduce((acc,influencer)=>acc + influencer.verifiedClaims,0);
+          const averageTrustScore = data.reduce((acc, influencer)=> acc + influencer.trustScore,0)/totalInfluencers;
         }
       }
     })
