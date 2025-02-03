@@ -51,31 +51,56 @@ const InfluencerTrust = () => {
           const data = await response.json();
           console.log("ChatGPT Response: ",data)
 
-          if(!data.choices || data.choices.length === 0){
-            throw new Error("Invalid API response: choices array is missing.");
+          if(!data.choices || data.choices.length === 0 || !data.choices[0].message){
+            throw new Error("Invalid API response structure.");
           }
+
+          const content = data.choices[0].message.content.trim();
+          console.log("AI Response Content:", content);
         
+          let influencersData;
+          try{
+            influencersData = JSON.parse(content);
+          }catch(parseError){
+console.warn("AI response is not valid JSON. Trying to extract JSON...");
+const match = content.match(/```json([\s\S]*?)```/);
+if(match){
+  try{
+    influencersData = JSON.parse(match[1]);
+  }catch(nestedError){
+    console.error("Error parsing extracted JSON:",nestedError);
+    return;
+  }
+}else{
+  console.error("Could not find JSON in AI response.");
+  return;
+}
+
+}
+
+          if(!Array.isArray(influencersData)){
+            throw new Error("API did not return an array of influencers.");
+          }
 
           //Calculate Stats
-          const totalInfluencers = data.length;
-          const verifiedClaims = data.reduce((acc,influencer)=>acc + influencer.verifiedClaims,0);
-          const averageTrustScore = data.reduce((acc, influencer)=> acc + influencer.trustScore,0)/totalInfluencers;
+          const totalInfluencers = influencersData.length;
+          const verifiedClaims = influencersData.reduce((acc,influencer)=>acc + influencer.verifiedClaims || 0);
+          const averageTrustScore = influencersData.reduce((acc, influencer)=> acc + influencer.trustScore || 0)/totalInfluencers;
         
-        setInfluencers(data);
+        setInfluencers(influencersData);
         setStats({
           totalInfluencers,
           verifiedClaims,
           averageTrustScore: averageTrustScore.toFixed(1),
         });
         
-        return data;
 
         }catch(error){
           console.error("Error fetching influencer data:",error);
           return null;
         }
       }
-      fetchData("Give me the latest health trends.").then((data)=>{
+      fetchData("Give me the latest health trends in a valid JSON format with an array of influencers. Each influencer should have 'name', 'category', 'trustScore', 'trend', 'followers', and 'verifiedClaims'.").then((data)=>{
         if(data){
           console.log("AI Response:",data.choices[0].message.content);
         }
