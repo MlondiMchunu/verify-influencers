@@ -39,7 +39,7 @@ const InfluencerTrust = () => {
           body: JSON.stringify({
             model: "gpt-4o-mini",
             messages: [{ role: "user", content: prompt }],
-            max_tokens: 1000
+            max_tokens: 1000,
           }),
         });
 
@@ -49,7 +49,34 @@ const InfluencerTrust = () => {
         }
 
         const data = await response.json();
-        console.log("ChatGPT Response: ", data)
+        console.log("Raw API Response ", data);
+
+        let influencersData;
+
+        if (Array.isArray(data)) {
+          influencersData = data;
+        }
+        else if (typeof data === "object" && data.influencers) {
+          influencersData = data.influencers;
+        }
+        else {
+          console.error("API response does not contain an array:", data);
+          return;
+        }
+
+//Calculate Stats
+const totalInfluencers = influencersData.length;
+const verifiedClaims = influencersData.reduce((acc, influencer) => acc + (influencer.verifiedClaims || 0),0);
+const averageTrustScore = influencersData.reduce((acc, influencer) => acc + (influencer.trustScore || 0),0) / totalInfluencers;
+
+
+setInfluencers(influencersData);
+setStats({
+  totalInfluencers,
+  verifiedClaims,
+  averageTrustScore: averageTrustScore.toFixed(1),
+});
+
 
         if (!data.choices || data.choices.length === 0 || !data.choices[0].message) {
           throw new Error("Invalid API response structure.");
@@ -58,7 +85,7 @@ const InfluencerTrust = () => {
         const content = data.choices[0].message.content.trim();
         console.log("AI Response Content:", content);
 
-        let influencersData;
+        
         try {
           influencersData = JSON.parse(content);
         } catch (parseError) {
@@ -77,30 +104,6 @@ const InfluencerTrust = () => {
           }
 
         }
-
-        if (Array.isArray(data)) {
-          influencersData = data;
-        }
-        else if (typeof data === "object" && data.influencers) {
-          influencersData = data.influencers;
-        }
-        else {
-          console.error("API response does not contain an array:", data);
-          return;
-        }
-
-        //Calculate Stats
-        const totalInfluencers = influencersData.length;
-        const verifiedClaims = influencersData.reduce((acc, influencer) => acc + influencer.verifiedClaims || 0);
-        const averageTrustScore = influencersData.reduce((acc, influencer) => acc + influencer.trustScore || 0) / totalInfluencers;
-
-        setInfluencers(influencersData);
-        setStats({
-          totalInfluencers,
-          verifiedClaims,
-          averageTrustScore: averageTrustScore.toFixed(1),
-        });
-
 
       } catch (error) {
         console.error("Error fetching influencer data:", error);
