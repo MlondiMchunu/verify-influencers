@@ -40,9 +40,20 @@ const InfluencerTrust = () => {
           const totalInfluencers = data.length;
           const verifiedClaims = data.reduce((acc,influencer)=>acc + influencer.verifiedClaims,0);
           const averageTrustScore = data.reduce((acc, influencer)=> acc + influencer.trustScore,0)/totalInfluencers;
+        
+        setInfluencers(data);
+        setStats({
+          totalInfluencers,
+          verifiedClaims,
+          averageTrustScore: averageTrustScore.toFixed(1),
+        });
+
+        }catch(error){
+          console.error("Error fetching influencer data:",error);
         }
       }
-    })
+      fetchData();
+    },[])
   
 
   //function to handle category filter
