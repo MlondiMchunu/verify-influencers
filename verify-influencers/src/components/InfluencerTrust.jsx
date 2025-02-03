@@ -1,9 +1,10 @@
 import React from "react";
 import { CircleCheckBig, Users, ChartColumn } from "lucide-react";
 import { useState, useEffect } from 'react';
-import env from "react-dotenv";
+//import env from "react-dotenv";
 
-const api = process.env.VITE_API_KEY
+const apiKey = import.meta.env.VITE_API_KEY;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 /*const influencers = [
   { rank: 1, name: "Dr. John Doe", category: "Nutrition", trustScore: 85, trend: "+2%", followers: "1.2M", verifiedClaims: 45 },
@@ -13,6 +14,9 @@ const api = process.env.VITE_API_KEY
   { rank: 5, name: "Dr. Brian Green", category: "Nutrition", trustScore: 74, trend: "0%", followers: "500K", verifiedClaims: 29 },
 ];
 */
+
+console.log("API KEY:", import.meta.env.VITE_API_KEY);
+console.log("API URL:", import.meta.env.VITE_API_URL);
 
 const InfluencerTrust = () => {
 
@@ -31,10 +35,29 @@ const InfluencerTrust = () => {
     });
 
     useEffect(()=>{
-      async function fetchData(){
+      async function fetchData(prompt){
         try{
-          const response = await fetch("");
+          const response = await fetch(apiUrl,{
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json",
+              Authorization:`Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+              model:"gpt-4",
+              messages:[{role:"user",content:prompt}],
+              max_tokens:100
+            }),
+          });
+
+          //Check if response is JSON
+          if(!response.ok){
+            throw new Error(`API error:${response.status} ${response.statusText}`);
+          }
+
           const data = await response.json();
+          console.log("ChatGPT Response: ",data)
+          return data;
 
           //Calculate Stats
           const totalInfluencers = data.length;
@@ -50,10 +73,15 @@ const InfluencerTrust = () => {
 
         }catch(error){
           console.error("Error fetching influencer data:",error);
+          return null;
         }
       }
-      fetchData();
-    },[])
+      fetchData("Give me the latest health trends.").then((data)=>{
+        if(data){
+          console.log("AI Response:",data.choices[0].message.content);
+        }
+      });
+    },[]);
   
 
   //function to handle category filter
@@ -61,7 +89,7 @@ const InfluencerTrust = () => {
     ? influencers
     : influencers.filter(influencer => influencer.category === activeFilter);
 
-  var totalInfluencers = 0;
+  /*var totalInfluencers = 0;
   influencers.forEach(arr => {
     totalInfluencers++
   })
@@ -78,7 +106,7 @@ const InfluencerTrust = () => {
   // console.log("TrustScore total: ",trustScoreTot)
   //console.log("TrustScore total: ",avTrustScore)
 
-
+*/
 
   return (
 
@@ -97,7 +125,7 @@ const InfluencerTrust = () => {
                 <Users size={20} className="text-[#10b97f] mt-3" />
               </span>
               <span>
-                <p className="text-lg font-semibold">{totalInfluencers}</p>
+                <p className="text-lg font-semibold">{stats.totalInfluencers}</p>
                 <p className="text-xs text-gray-400">Active Influencers</p>
               </span>
             </div>
@@ -108,7 +136,7 @@ const InfluencerTrust = () => {
                 <CircleCheckBig size={20} className="text-[#10b97f] mt-3" />
               </span>
               <span>
-                <p className="text-lg font-semibold">--</p>
+                <p className="text-lg font-semibold">{stats.verifiedClaims}</p>
                 <p className="text-xs text-gray-400">Claims Verified</p>
               </span>
             </div>
@@ -119,7 +147,7 @@ const InfluencerTrust = () => {
                 <ChartColumn size={20} className="text-[#10b97f] mt-3" />
               </span>
               <span>
-                <p className="text-lg font-semibold">{avgTrustScore}%</p>
+                <p className="text-lg font-semibold">{stats.averageTrustScore}%</p>
                 <p className="text-xs text-gray-400">Average Trust Score</p>
               </span>
             </div>
@@ -202,9 +230,9 @@ const InfluencerTrust = () => {
 
             {/*Table Body*/}
             <tbody className="text-gray-200">
-              {filteredInfluencers.map((influencer) => (
+              {filteredInfluencers.map((influencer,index) => (
                 <tr key={influencer.id} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5 bg-[#182130]">
-                  <td className="border-b border-gray-600 px-4 py-2">{influencer.rank}</td>
+                  <td className="border-b border-gray-600 px-4 py-2">{index + 1}</td>
                   <td className="border-b border-gray-600 px-4 py-2">{influencer.name}</td>
                   <td className="border-b border-gray-600 px-4 py-2">{influencer.category}</td>
                   <td className="border-b border-gray-600 px-4 py-2">{influencer.trustScore}</td>
