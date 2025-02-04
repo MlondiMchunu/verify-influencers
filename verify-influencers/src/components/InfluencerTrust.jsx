@@ -57,7 +57,7 @@ const InfluencerTrust = () => {
           return;
         }
 
-        rawText = rawText.replace(/^```json\n```$/g,"");
+        rawText = rawText.replace(/^```json\n```$/g, "");
 
         let influencersData;
 
@@ -119,7 +119,7 @@ const InfluencerTrust = () => {
         //return null;
       }
     }
-    fetchData(`Provide a JSON array of health influencers. Each influencer should have:
+    fetchData(`Provide ONLY a JSON array of health influencers with these fields:
 - "name" (string)
 - "category" (string, one of: "Nutrition", "Fitness", "Medicine", "Mental Health")
 - "trustScore" (number between 0-100)
@@ -127,7 +127,7 @@ const InfluencerTrust = () => {
 - "followers" (number)
 - "verifiedClaims" (number)
 
-Return ONLY the JSON array, with no extra text or explanation.`).then((data) => {
+Do NOT include explanations, markdown, or formatting—return raw JSON only.`).then((data) => {
       if (data) {
         console.log("AI Response:", data.choices[0].message.content);
       }
@@ -224,7 +224,7 @@ Return ONLY the JSON array, with no extra text or explanation.`).then((data) => 
             {/*Table Body*/}
             <tbody className="text-gray-200">
               {filteredInfluencers.map((influencer, index) => (
-                <tr key={influencer.id} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5 bg-[#182130]">
+                <tr key={influencer.id || `infuencer-${index}`} className="text-center hover:bg-[#1b2a41] transition-all duration-300 text-xs/5 bg-[#182130]">
                   <td className="border-b border-gray-600 px-4 py-2">{index + 1}</td>
                   <td className="border-b border-gray-600 px-4 py-2">{influencer.name}</td>
                   <td className="border-b border-gray-600 px-4 py-2">{influencer.category}</td>
