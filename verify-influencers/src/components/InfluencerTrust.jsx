@@ -51,6 +51,9 @@ const InfluencerTrust = () => {
         const data = await response.json();
         console.log("Raw API Response ", data);
 
+        const rawText = data.choices?.[0]?.message?.content;
+        
+
         let influencersData;
 
         if (Array.isArray(data)) {
