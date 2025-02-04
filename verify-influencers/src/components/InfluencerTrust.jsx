@@ -51,11 +51,13 @@ const InfluencerTrust = () => {
         const data = await response.json();
         console.log("Raw API Response ", data);
 
-        const rawText = data.choices?.[0]?.message?.content;
+        let rawText = data.choices?.[0]?.message?.content;
         if (!rawText) {
           console.error("No content received from AI.");
           return;
         }
+
+        rawText = rawText.replace(/^```json\n```$/g,"");
 
         let influencersData;
 
@@ -117,9 +119,15 @@ const InfluencerTrust = () => {
         //return null;
       }
     }
-    fetchData(`Provide the latest health influencer trends in valid JSON format. 
-Return an array under the key "influencers" where each influencer has the following fields: 
-"name", "category", "trustScore", "trend", "followers", and "verifiedClaims".`).then((data) => {
+    fetchData(`Provide a JSON array of health influencers. Each influencer should have:
+- "name" (string)
+- "category" (string, one of: "Nutrition", "Fitness", "Medicine", "Mental Health")
+- "trustScore" (number between 0-100)
+- "trend" (string, e.g., "Upward" or "Stable")
+- "followers" (number)
+- "verifiedClaims" (number)
+
+Return ONLY the JSON array, with no extra text or explanation.`).then((data) => {
       if (data) {
         console.log("AI Response:", data.choices[0].message.content);
       }
