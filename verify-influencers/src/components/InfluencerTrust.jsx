@@ -52,7 +52,10 @@ const InfluencerTrust = () => {
         console.log("Raw API Response ", data);
 
         const rawText = data.choices?.[0]?.message?.content;
-        
+        if(!rawText){
+          console.error("No content received from AI.");
+          return;
+        }
 
         let influencersData;
 
