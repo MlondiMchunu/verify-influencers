@@ -59,7 +59,14 @@ const InfluencerTrust = () => {
 
         let influencersData;
 
-        if (Array.isArray(data)) {
+        try{
+          influencersData = JSON.parse(rawText);
+        }catch(jsonError){
+          console.error("Error parsing AI response as JSON:",jsonError,"Raw text ",rawText);
+          return;
+        }
+
+        if (!Array.isArray(influencersData)) {
           influencersData = data;
         }
         else if (typeof data === "object" && data.influencers) {
