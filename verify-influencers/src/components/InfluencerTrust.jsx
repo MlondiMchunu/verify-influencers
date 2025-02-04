@@ -52,43 +52,37 @@ const InfluencerTrust = () => {
         console.log("Raw API Response ", data);
 
         const rawText = data.choices?.[0]?.message?.content;
-        if(!rawText){
+        if (!rawText) {
           console.error("No content received from AI.");
           return;
         }
 
         let influencersData;
 
-        try{
+        try {
           influencersData = JSON.parse(rawText);
-        }catch(jsonError){
-          console.error("Error parsing AI response as JSON:",jsonError,"Raw text ",rawText);
+        } catch (jsonError) {
+          console.error("Error parsing AI response as JSON:", jsonError, "Raw text ", rawText);
           return;
         }
 
         if (!Array.isArray(influencersData)) {
-          influencersData = data;
-        }
-        else if (typeof data === "object" && data.influencers) {
-          influencersData = data.influencers;
-        }
-        else {
-          console.error("API response does not contain an array:", data);
+          console.error("API reponse is not an array:", influencersData);
           return;
         }
 
-//Calculate Stats
-const totalInfluencers = influencersData.length;
-const verifiedClaims = influencersData.reduce((acc, influencer) => acc + (influencer.verifiedClaims || 0),0);
-const averageTrustScore = influencersData.reduce((acc, influencer) => acc + (influencer.trustScore || 0),0) / totalInfluencers;
+        //Calculate Stats
+        const totalInfluencers = influencersData.length;
+        const verifiedClaims = influencersData.reduce((acc, influencer) => acc + (influencer.verifiedClaims || 0), 0);
+        const averageTrustScore = influencersData.reduce((acc, influencer) => acc + (influencer.trustScore || 0), 0) / totalInfluencers;
 
 
-setInfluencers(influencersData);
-setStats({
-  totalInfluencers,
-  verifiedClaims,
-  averageTrustScore: averageTrustScore.toFixed(1),
-});
+        setInfluencers(influencersData);
+        setStats({
+          totalInfluencers,
+          verifiedClaims,
+          averageTrustScore: averageTrustScore.toFixed(1),
+        });
 
 
         if (!data.choices || data.choices.length === 0 || !data.choices[0].message) {
@@ -98,7 +92,7 @@ setStats({
         const content = data.choices[0].message.content.trim();
         console.log("AI Response Content:", content);
 
-        
+
         try {
           influencersData = JSON.parse(content);
         } catch (parseError) {
