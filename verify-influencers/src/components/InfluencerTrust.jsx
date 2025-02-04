@@ -114,7 +114,7 @@ const InfluencerTrust = () => {
 
       } catch (error) {
         console.error("Error fetching influencer data:", error);
-        return null;
+        //return null;
       }
     }
     fetchData(`Provide the latest health influencer trends in valid JSON format. 
