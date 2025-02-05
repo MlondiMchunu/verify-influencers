@@ -1,7 +1,6 @@
 POST https://api.openai.com/v1/chat/completions
 Content-Type: application/json
-Authorization: Bearer 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
-
+Authorization: Bearer .env.VITE_API_KEY
 {
   "model": "gpt-4o-mini",
   "messages": [
