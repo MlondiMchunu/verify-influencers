@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouetr as Router,Routes, Route, Link } from "react-router-dom";
 import { Shield } from "lucide-react";
 
 const Menubar = () => {
