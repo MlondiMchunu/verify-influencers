@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouetr as Router, Routes, Route, Link } from "react-router-dom";
 import { Shield } from "lucide-react";
+import InfluencerTrust from "./InfluencerTrust";
 
 const Menubar = () => {
   return (
@@ -25,7 +26,7 @@ const Menubar = () => {
       </nav>
 
       <Routes>
-        <Route path="/leaderboard" element={<div>Leaderboard Page</div>} />
+        <Route path="/leaderboard" element={<InfluencerTrust />} />
         <Route path="/products" element={<div>Products Page</div>} />
         <Route path="/monetization" element={<div>Monetization Page</div>} />
         <Route path="/about" element={<div>About Page</div>} />
