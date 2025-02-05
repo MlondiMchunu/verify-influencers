@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import InfluencerTrust from './components/InfluencerTrust';
 import Main from "./components/Main";
 import './App.css'
 
