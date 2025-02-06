@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouetr as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Shield } from "lucide-react";
 import InfluencerTrust from "./InfluencerTrust";
+import ResearchTasksComponent from "./ResearchTasksComponent";
 
 const Menubar = () => {
   return (
@@ -17,6 +18,7 @@ const Menubar = () => {
         {/* Navigation Links */}
         <div className="flex space-x-6 text-xs/5 ">
           <Link to="/leaderboard" className="text-white !text-white hover:text-green-400 transition-colors ">Leaderboard</Link>
+          <Link to="/researchTasks" className="text-white !text-white hover:text-green-400 transition-colors">Research Tasks</Link>
           <Link to="/products" className="text-white !text-white hover:text-green-400 transition-colors">Products</Link>
           <Link to="/monetization" className="text-white !text-white hover:text-green-400 transition-colors">Monetization</Link>
           <Link to="/about" className="text-white !text-white hover:text-green-400 transition-colors">About</Link>
@@ -27,6 +29,7 @@ const Menubar = () => {
 
       <Routes>
         <Route path="/leaderboard" element={<InfluencerTrust />} />
+        <Route path="/researchTasks" element={<ResearchTasksComponent/>} />
         <Route path="/products" element={<div>Products Page</div>} />
         <Route path="/monetization" element={<div>Monetization Page</div>} />
         <Route path="/about" element={<div>About Page</div>} />
