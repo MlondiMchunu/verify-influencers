@@ -11,17 +11,8 @@ function App() {
 
   return (
     <>
-    <Router>
       <Main />
-      <Routes>
-        <Route path="/leaderboard" element={<div>Leaderboard Page</div>} />
-        <Route path="/products" element={<div>Products Page</div>} />
-        <Route path="/monetization" element={<div>Monetization Page</div>} />
-        <Route path="/about" element={<div>About Page</div>} />
-        <Route path="/contact" element={<div>Contact Page</div>} />
-        <Route path="/admin" element={<div>Admin Page</div>} />
-      </Routes>
-      </Router>
+      
     </>
   )
 }
