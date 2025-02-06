@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "clean":"clean",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.3",
+    "clean": "^4.0.2",
     "dotenv": "^16.4.7",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
