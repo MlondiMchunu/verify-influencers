@@ -8,11 +8,15 @@ const Menubar = () => {
   return (
 
     <Router>
-      <nav className="w-full bg-[#101727] border-b border-gray-800 p-4 flex flex-wrap items-center justify-between md:px-8 ">
+
+      <nav className="w-full bg-[#101727] border-b border-gray-800 p-4 flex flex-wrap items-center justify-between md:px-8">
         {/* Logo or App Name (Optional) */}
-        <div className="flex items-center space-x-2 text-[#10bb80] text-sm md:text-base font-bold">
+        <div className="-ml-7 flex items-center space-x-2 text-sm md:text-base font-bold mr-6">
+
           <Shield size={20} className="text-[#10bb80]" />
-          <span>VerifyInfluencers</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#24ae86] to-[#3d68c0]">
+            VerifyInfluencers
+          </span>
         </div>
 
         {/* Navigation Links */}
@@ -29,7 +33,7 @@ const Menubar = () => {
 
       <Routes>
         <Route path="/leaderboard" element={<InfluencerTrust />} />
-        <Route path="/researchTasks" element={<ResearchTasksComponent/>} />
+        <Route path="/researchTasks" element={<ResearchTasksComponent />} />
         <Route path="/products" element={<div>Products Page</div>} />
         <Route path="/monetization" element={<div>Monetization Page</div>} />
         <Route path="/about" element={<div>About Page</div>} />
