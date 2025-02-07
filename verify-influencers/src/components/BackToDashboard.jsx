@@ -8,7 +8,7 @@ export default function BackToDashboard(){
       <label
         className="bg-[#101727] text-[#1db687] rounded-lg inline-flex items-center gap-2 shadow-md cursor-pointer ml-5 py-2 whitespace-nowrap"
         onClick={() => window.history.back()} // Navigate back
-      >
+
         <ArrowLeft size={20} className=" text-[#1db687]" />
         <span className="text-xs/3">Back to Dashboard</span>
       </label>

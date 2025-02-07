@@ -13,20 +13,19 @@ import BackToDashboard from "./BackToDashboard";
 export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false);
     return (
-        <div className="relative w-full max-w-full">
-            <div className="absolute flex">
-                <BackToDashboard />
-            </div>
 
             <div className="bg-[#182130] w-full h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center relative overflow-hidden">
+
 
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
                     <p className="text-white text-sm font-bold">Research Configuration</p>
                 </div>
 
+
                 {/* Main content divided into two columns */}
                 <div className="mt-16 flex flex-wrap gap-2 justify-center">
+
 
                     {/* Left column */}
                     <div className="flex-1 flex flex-col max-w-full sm:max-w-[1040px]">
@@ -61,6 +60,12 @@ export default function ResearchTasksComponent() {
                         <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px]">Recommended: 50-100 claims for comprehensive analysis</p></div>
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Scientific Journals</p></div>
+                        {/*
+                        <div>
+                            <ScientificJournalsComponent />
+                        </div>
+                        */}
+
                     </div>
 
                     {/* Right Column */}
