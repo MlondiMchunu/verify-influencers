@@ -7,22 +7,28 @@ import ScientificJournalsComponent from './ScientificJournalsComponent';
 import ProductsPerInfluencer from './ProductsPerInfluencer';
 import RevenueAnalysisToggle from './RevenueAnalysisToggle';
 import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
-import Main from './Main';
+import BackToDashboard from "./BackToDashboard";
 
 
 export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false)
     return (
-        <>
-            <div className="bg-[#182130] w-[calc(100vw-100px)] h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-evenly">
+        <div className="relative">
+            <div className="">
+                <BackToDashboard />
+            </div>
+
+            <div className="bg-[#182130] w-[calc(100vw-100px)] h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center relative">
 
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
-                    <p className="text-white text-sm text-lg font-bold">Research Configuration</p>
+                    <p className="text-white text-sm font-bold">Research Configuration</p>
                 </div>
+
                 {/*Main content divided into two columns*/}
 
                 <div className="mt-16 flex gap-2" >
+
                     {/*Left column**/}
                     <div className="flex-1 flex flex-col ">
                         {/*Left column content**/}
@@ -60,7 +66,7 @@ export default function ResearchTasksComponent() {
 
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Scientific Journals</p></div>
-{/*
+                        {/*
                         <div>
                             <ScientificJournalsComponent />
                         </div>
@@ -117,6 +123,6 @@ export default function ResearchTasksComponent() {
                 </div>
 
             </div>
-        </>
+        </div>
     );
 }

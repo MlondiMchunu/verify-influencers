@@ -9,8 +9,8 @@ export default function BackToDashboard(){
         className="bg-[#101727] text-[#1db687] p-3 rounded-lg flex items-center gap-2 shadow-md cursor-pointer"
         onClick={() => window.history.back()} // Navigate back
       >
-        <ArrowLeft className="w-6 h-6 text-[#1db687]" />
-        <span className="text-sm">Back to Dashboard</span>
+        <ArrowLeft size={15} className="w-6 h-6 text-[#1db687]" />
+        <span className="text-xs/3">Back to Dashboard</span>
       </label>
 
       {/* Research Tasks Header */}
