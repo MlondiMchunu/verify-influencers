@@ -8,15 +8,15 @@ const Menubar = () => {
   return (
 
     <Router>
-      <nav className="w-full bg-[#182130] p-4 flex flex-wrap items-center justify-between">
+      <nav className="w-full bg-[#101727] border-b border-gray-800 p-4 flex flex-wrap items-center justify-between md:px-8 ">
         {/* Logo or App Name (Optional) */}
-        <div className="flex items-center space-x-2 text-[#10bb80] text-sm font-bold">
+        <div className="flex items-center space-x-2 text-[#10bb80] text-sm md:text-base font-bold">
           <Shield size={20} className="text-[#10bb80]" />
           <span>VerifyInfluencers</span>
         </div>
 
         {/* Navigation Links */}
-        <div className="flex space-x-6 text-xs/5 ">
+        <div className="flex space-x-4 md:space-x-6 text-xs/5 opacity-70 ">
           <Link to="/leaderboard" className="text-white !text-white hover:text-green-400 transition-colors ">Leaderboard</Link>
           <Link to="/researchTasks" className="text-white !text-white hover:text-green-400 transition-colors">Research Tasks</Link>
           <Link to="/products" className="text-white !text-white hover:text-green-400 transition-colors">Products</Link>
