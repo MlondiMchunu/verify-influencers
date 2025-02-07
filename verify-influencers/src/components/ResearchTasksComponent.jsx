@@ -13,6 +13,7 @@ import BackToDashboard from "./BackToDashboard";
 export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false);
     return (
+        
 
             <div className="bg-[#182130] w-full h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center relative overflow-hidden">
 
@@ -117,6 +118,6 @@ export default function ResearchTasksComponent() {
                 </div>
 
             </div>
-        </div>
+        
     );
 }
