@@ -13,6 +13,17 @@ export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false);
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
+
+    // Function to handle journal selection
+    const handleJournalSelect = (journal) => {
+        if (selectedJournals.includes(journal)) {
+            // If the journal is already selected, remove it
+            setSelectedJournals(selectedJournals.filter((j) => j !== journal));
+        } else {
+            // If the journal is not selected, add it
+            setSelectedJournals([...selectedJournals, journal]);
+        }
+    };
     return (
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
