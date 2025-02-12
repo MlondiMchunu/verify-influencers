@@ -12,6 +12,8 @@ import BackToDashboard from "./BackToDashboard";
 export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false);
 
+    const [selectSpecificInfluencer,setselectSpecificInfluencer] = useState(false)
+
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
     // List of all journals
@@ -27,6 +29,10 @@ export default function ResearchTasksComponent() {
 
     // List of time ranges
     const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
+
+    const handleSpecificInfluencerSelect = ()=>{
+setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influencer select
+    };
 
     // Function to handle time range selection
     const handleTimeRangeSelect = (range) => {
