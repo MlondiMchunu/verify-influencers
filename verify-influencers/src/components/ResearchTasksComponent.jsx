@@ -14,16 +14,16 @@ export default function ResearchTasksComponent() {
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
- // List of all journals
- const journals = [
-    "PubMed Central",
-    "Nature",
-    "Science",
-    "Cell",
-    "The Lancet",
-    "New England Journal of Medicine",
-    "JAMA Network",
-];
+    // List of all journals
+    const journals = [
+        "PubMed Central",
+        "Nature",
+        "Science",
+        "Cell",
+        "The Lancet",
+        "New England Journal of Medicine",
+        "JAMA Network",
+    ];
 
     // Function to handle journal selection
     const handleJournalSelect = (journal) => {
@@ -36,13 +36,13 @@ export default function ResearchTasksComponent() {
         }
     };
 
-     // Function to select all journals
-     const handleSelectAll = () => {
+    // Function to select all journals
+    const handleSelectAll = () => {
         setSelectedJournals([...journals]); // Select all journals
     };
 
-     // Function to deselect all journals
-     const handleDeselectAll = () => {
+    // Function to deselect all journals
+    const handleDeselectAll = () => {
         setSelectedJournals([]); // Deselect all journals
     };
 
@@ -145,28 +145,47 @@ export default function ResearchTasksComponent() {
                         </div>
                     </div>
 
-                     {/*Scientific Journals*/}
-                     <div className="w-full mt-2 px-4">
-                <p className="text-white text-xs/5 mb-2 text-left">Scientific Journal</p>
-                <div className="grid grid-cols-2 gap-2 text-xs/5">
-                    {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
-                        <label
-                            key={index}
-                            className={`w-full bg-[#182130] border-1 ${
-                                selectedJournals.includes(label)
-                                    ? 'border-[#14b983] !bg-[#173438]' // Selected style
-                                    : 'border-gray-600' // Default style
-                            } text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300`}
-                            onClick={() => handleJournalSelect(label)}
-                        >
-                            {label}
-                        </label>
-                    ))}
-                </div>
-            </div>
+                    {/*Scientific Journals*/}
+                    <div className="w-full mt-2 px-4">
+                        <p className="text-white text-xs/5 mb-2 text-left">Scientific Journal</p>
+
+                        <div className="w-full mt-2 px-4">
+                            <div className="flex justify-between items-center mb-2">
+                                <p className="text-white text-sm text-left">Filter by Journals</p> {/* Align text to the left */}
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={handleSelectAll}
+                                        className="text-xs/3 text-[#14b983] hover:underline focus:outline-none"
+                                    >
+                                        Select All
+                                    </button>
+                                    <button
+                                        onClick={handleDeselectAll}
+                                        className="text-xs/3 text-[#14b983] hover:underline focus:outline-none"
+                                    >
+                                        Deselect All
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2">
+                                {journals.map((label, index) => (
+                                    <label
+                                        key={index}
+                                        className={`w-full bg-[#182130] border-1 ${selectedJournals.includes(label)
+                                                ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                                                : 'border-gray-400' // Default style
+                                            } text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300`}
+                                        onClick={() => handleJournalSelect(label)}
+                                    >
+                                        {label}
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-               
+
             </div>
         </div>
     );
