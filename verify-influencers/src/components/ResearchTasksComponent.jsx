@@ -25,6 +25,14 @@ export default function ResearchTasksComponent() {
         "JAMA Network",
     ];
 
+       // List of time ranges
+       const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
+
+        // Function to handle time range selection
+    const handleTimeRangeSelect = (range) => {
+        setSelectedTimeRange(range); // Only one time range can be selected at a time
+    };
+
     // Function to handle journal selection
     const handleJournalSelect = (journal) => {
         if (selectedJournals.includes(journal)) {
@@ -95,7 +103,6 @@ export default function ResearchTasksComponent() {
                         </div>
                         <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px]">Recommended: 50-100 claims for comprehensive analysis</p></div>
 
-                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Scientific Journals</p></div>
                     </div>
 
                     {/* Right Column */}
@@ -146,22 +153,20 @@ export default function ResearchTasksComponent() {
                     </div>
 
                     {/*Scientific Journals*/}
-                    <div className="w-full mt-2 px-4">
-                        <p className="text-white text-xs/5 mb-2 text-left">Scientific Journal</p>
-
+                        
                         <div className="w-full mt-2 px-4">
                             <div className="flex justify-between items-center mb-2">
-                                <p className="text-white text-sm text-left">Filter by Journals</p> {/* Align text to the left */}
+                                <p className="text-white text-xs/5 text-left">Scientific Journals</p> {/* Align text to the left */}
                                 <div className="flex gap-2">
                                     <button
                                         onClick={handleSelectAll}
-                                        className="text-xs/3 text-[#14b983] hover:underline focus:outline-none"
+                                        className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
                                     >
                                         Select All
-                                    </button>
+                                    </button> |
                                     <button
                                         onClick={handleDeselectAll}
-                                        className="text-xs/3 text-[#14b983] hover:underline focus:outline-none"
+                                        className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
                                     >
                                         Deselect All
                                     </button>
@@ -182,7 +187,7 @@ export default function ResearchTasksComponent() {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
 
 
