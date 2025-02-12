@@ -40,7 +40,12 @@ export default function ResearchTasksComponent() {
      const handleSelectAll = () => {
         setSelectedJournals([...journals]); // Select all journals
     };
-    
+
+     // Function to deselect all journals
+     const handleDeselectAll = () => {
+        setSelectedJournals([]); // Deselect all journals
+    };
+
     return (
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
