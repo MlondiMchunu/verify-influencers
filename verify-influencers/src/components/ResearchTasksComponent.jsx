@@ -16,6 +16,7 @@ export default function ResearchTasksComponent() {
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
                 <BackToDashboard />
+                <span className="text-white font-bold">Research Tasks</span>
             </div>
 
             <div className="bg-[#182130] w-full h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center relative overflow-hidden">
@@ -111,6 +112,16 @@ export default function ResearchTasksComponent() {
                     </div>
                 </div>
 
+                {/*Scientific Journals*/}
+                <div className="mt-6 grid grid-cols-2 gap-4 w-full max-w-[1040px] mx-auto">
+                    {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
+                        <label
+                            key={index}
+                            className="w-full bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-sm font-bold rounded-sm cursor-pointer text-center transition-all duration-300 p-4">
+                            {label}
+                        </label>
+                    ))}
+                </div>
             </div>
         </div>
     );
