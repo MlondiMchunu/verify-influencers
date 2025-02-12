@@ -25,10 +25,10 @@ export default function ResearchTasksComponent() {
         "JAMA Network",
     ];
 
-       // List of time ranges
-       const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
+    // List of time ranges
+    const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
 
-        // Function to handle time range selection
+    // Function to handle time range selection
     const handleTimeRangeSelect = (range) => {
         setSelectedTimeRange(range); // Only one time range can be selected at a time
     };
@@ -85,20 +85,19 @@ export default function ResearchTasksComponent() {
 
                         <div className="text-white text-xs/5 opacity-80"><p className="ml-[5px]">Time Range</p></div>
                         <div className="ml-[10px] grid grid-cols-2 gap-1 w-full max-w-[1040px] opacity-80">
-                          
-                        {timeRanges.map((range, index) => (
-                        <label
-                            key={index}
-                            className={`w-full min-h-[30px] bg-[#182130] border-1 ${
-                                selectedTimeRange === range
-                                    ? 'border-[#14b983] bg-[#173438]' // Selected style
-                                    : 'border-gray-400' // Default style
-                            } text-white flex items-center justify-center text-xs/5 rounded-sm cursor-pointer text-center transition-all duration-300`}
-                            onClick={() => handleTimeRangeSelect(range)}
-                        >
-                            {range}
-                        </label>
-                    ))}
+
+                            {timeRanges.map((range, index) => (
+                                <label
+                                    key={index}
+                                    className={`w-full min-h-[30px] bg-[#182130] border-1 ${selectedTimeRange === range
+                                            ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                                            : 'border-gray-400' // Default style
+                                        } text-white flex items-center justify-center text-xs/5 rounded-sm cursor-pointer text-center transition-all duration-300`}
+                                    onClick={() => handleTimeRangeSelect(range)}
+                                >
+                                    {range}
+                                </label>
+                            ))}
 
                         </div>
 
@@ -163,41 +162,41 @@ export default function ResearchTasksComponent() {
                     </div>
 
                     {/*Scientific Journals*/}
-                        
-                        <div className="w-full mt-2 px-4">
-                            <div className="flex justify-between items-center mb-2">
-                                <p className="text-white text-xs/5 text-left">Scientific Journals</p> {/* Align text to the left */}
-                                <div className="flex gap-2">
-                                    <button
-                                        onClick={handleSelectAll}
-                                        className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
-                                    >
-                                        Select All
-                                    </button> |
-                                    <button
-                                        onClick={handleDeselectAll}
-                                        className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
-                                    >
-                                        Deselect All
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-2">
-                                {journals.map((label, index) => (
-                                    <label
-                                        key={index}
-                                        className={`w-full bg-[#182130] border-1 ${selectedJournals.includes(label)
-                                                ? 'border-[#14b983] !bg-[#173438]' // Selected style
-                                                : 'border-gray-400' // Default style
-                                            } text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300`}
-                                        onClick={() => handleJournalSelect(label)}
-                                    >
-                                        {label}
-                                    </label>
-                                ))}
+
+                    <div className="w-full mt-2 px-4">
+                        <div className="flex justify-between items-center mb-2">
+                            <p className="text-white text-xs/5 text-left">Scientific Journals</p> {/* Align text to the left */}
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={handleSelectAll}
+                                    className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
+                                >
+                                    Select All
+                                </button> |
+                                <button
+                                    onClick={handleDeselectAll}
+                                    className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
+                                >
+                                    Deselect All
+                                </button>
                             </div>
                         </div>
-                    
+                        <div className="grid grid-cols-2 gap-2">
+                            {journals.map((label, index) => (
+                                <label
+                                    key={index}
+                                    className={`w-full bg-[#182130] border-1 ${selectedJournals.includes(label)
+                                        ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                                        : 'border-gray-400' // Default style
+                                        } text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300`}
+                                    onClick={() => handleJournalSelect(label)}
+                                >
+                                    {label}
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
 
 
