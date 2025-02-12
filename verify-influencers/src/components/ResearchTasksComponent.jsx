@@ -14,6 +14,17 @@ export default function ResearchTasksComponent() {
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
+ // List of all journals
+ const journals = [
+    "PubMed Central",
+    "Nature",
+    "Science",
+    "Cell",
+    "The Lancet",
+    "New England Journal of Medicine",
+    "JAMA Network",
+];
+
     // Function to handle journal selection
     const handleJournalSelect = (journal) => {
         if (selectedJournals.includes(journal)) {
@@ -125,8 +136,8 @@ export default function ResearchTasksComponent() {
 
                      {/*Scientific Journals*/}
                      <div className="w-full mt-2 px-4">
-                <p className="text-white text-sm mb-2">Filter by Journals</p>
-                <div className="grid grid-cols-2 gap-2">
+                <p className="text-white text-xs/5 mb-2 text-left">Scientific Journal</p>
+                <div className="grid grid-cols-2 gap-2 text-xs/5">
                     {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
                         <label
                             key={index}
