@@ -11,6 +11,8 @@ import BackToDashboard from "./BackToDashboard";
 
 export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false);
+
+    const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
     return (
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
