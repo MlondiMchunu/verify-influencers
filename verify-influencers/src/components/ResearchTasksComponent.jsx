@@ -10,9 +10,13 @@ import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 import BackToDashboard from "./BackToDashboard";
 
 export default function ResearchTasksComponent() {
-    const [isToggled, setIsToggled] = useState(false);
+    const [isToggledRA, setIsToggledRA] = useState(false);
 
-    const [selectSpecificInfluencer,setselectSpecificInfluencer] = useState(false)
+    const [isToggledVSJ, setIsToggledVSJ] = useState(false);
+
+    const [selectSpecificInfluencer, setselectSpecificInfluencer] = useState(false)
+
+    const [discoverNewInfluencers,setdiscoverNewInfluencers] = useState(false)
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
@@ -30,9 +34,13 @@ export default function ResearchTasksComponent() {
     // List of time ranges
     const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
 
-    const handleSpecificInfluencerSelect = ()=>{
-setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influencer select
+    const handleSpecificInfluencerSelect = () => {
+        setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influencer select
     };
+
+    const handleDiscoverNewInfluencers = ()=>{
+        setdiscoverNewInfluencers(!discoverNewInfluencers)
+    }
 
     // Function to handle time range selection
     const handleTimeRangeSelect = (range) => {
@@ -82,22 +90,26 @@ setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influenc
                     {/* Left column */}
                     <div className="flex-1 flex flex-col max-w-full sm:max-w-[1040px]">
                         {/* Left column content */}
-                        <label className="ml-[10px] w-full bg-[#182130] border-1 border-gray-400 text-white px-[2px] py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
-                            <span className="text-sm font-bold block">Specific Influencer</span>
+                        <label className={`ml-[10px] w-full bg-[#182130] border-1 ${selectSpecificInfluencer
+                            ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                            : 'border-gray-400' // Default style
+                            } text-white px-[2px] py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300`}
+                            onClick={handleSpecificInfluencerSelect}>
+                            <span className="text-sm font-bold block ">Specific Influencer</span>
                             <span className="text-xs/5 opacity-80 block mt-1">
                                 Research a known health influencer by name
                             </span>
                         </label>
 
-                        <div className="text-white text-xs/5 opacity-80"><p className="ml-[5px]">Time Range</p></div>
+                        <div className="text-white text-xs/5 opacity-80 text-left"><p className="ml-[5px]">Time Range</p></div>
                         <div className="ml-[10px] grid grid-cols-2 gap-1 w-full max-w-[1040px] opacity-80">
 
                             {timeRanges.map((range, index) => (
                                 <label
                                     key={index}
                                     className={`w-full min-h-[30px] bg-[#182130] border-1 ${selectedTimeRange === range
-                                            ? 'border-[#14b983] !bg-[#173438]' // Selected style
-                                            : 'border-gray-400' // Default style
+                                        ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                                        : 'border-gray-400' // Default style
                                         } text-white flex items-center justify-center text-xs/5 rounded-sm cursor-pointer text-center transition-all duration-300`}
                                     onClick={() => handleTimeRangeSelect(range)}
                                 >
@@ -107,16 +119,16 @@ setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influenc
 
                         </div>
 
-                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Influencer Name</p></div>
+                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Influencer Name</p></div>
                         <div>
                             <InfluencerNameComponent />
                         </div>
 
-                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px]">Claims to Analyze Per Influencer</p></div>
+                        <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Claims to Analyze Per Influencer</p></div>
                         <div>
                             <ClaimsPerInfluencer />
                         </div>
-                        <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px]">Recommended: 50-100 claims for comprehensive analysis</p></div>
+                        <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px] text-left">Recommended: 50-100 claims for comprehensive analysis</p></div>
 
                     </div>
 
@@ -130,23 +142,32 @@ setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influenc
                             </span>
                         </label>
 
-                        <div className="text-white text-xs/5 opacity-80 mt-[10px]" ><p className="ml-[5px]">Products to Find Per Influencer</p></div>
+                        <div className="text-white text-xs/5 opacity-80 mt-[10px]" ><p className="ml-[5px] text-left">Products to Find Per Influencer</p></div>
                         <div>
                             <ProductsPerInfluencer />
                         </div>
-                        <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px]">Set to 0 to skip product research</p></div>
+                        <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px] text-left">Set to 0 to skip product research</p></div>
 
                         <div>
                             <div>
                                 <span className="flex flex-row mt-[15px]">
                                     <label className="ml-[10px] w-full bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
-                                        <span className="text-sm font-bold block">Include Revenue Analysis</span>
+                                        <span className="text-sm font-bold block text-left">Include Revenue Analysis</span>
                                         <span className="text-xs/5 opacity-80 block mt-1">
                                             Analyze monetization methods and estimate earnings
                                         </span>
                                     </label>
                                     <div className="py-8">
-                                        <RevenueAnalysisToggle isOn={isToggled} onToggle={() => setIsToggled(!isToggled)} />
+                                        <button
+                                            onClick={() => setIsToggledRA(!isToggledRA)}
+                                            className={`w-10 h-5 rounded-full p-1 transition-colors duration-300 flex items-center justify-center ${isToggledRA ? '!bg-[#14bc81]' : 'bg-gray-600'
+                                                }`}
+                                        >
+                                            <div
+                                                className={`w-5 h-2 bg-white rounded-full shadow-md transform transition-transform duration-300 ${isToggledRA ? 'translate-x-6' : 'translate-x-0'
+                                                    }`}
+                                            ></div>
+                                        </button>
                                     </div>
                                 </span>
                             </div>
@@ -160,7 +181,17 @@ setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influenc
                                         </span>
                                     </label>
                                     <div className="py-8">
-                                        <VerifyScientificJournalsToggle isOn={isToggled} onToggle={() => setIsToggled(!isToggled)} />
+
+                                        <button
+                                            onClick={() => setIsToggledVSJ(!isToggledVSJ)}
+                                            className={`w-10 h-5 rounded-full p-1 transition-colors duration-300 flex items-center justify-center ${isToggledVSJ ? '!bg-[#14bc81]' : 'bg-gray-500'
+                                                }`}
+                                        >
+                                            <div
+                                                className={`w-5 h-2 !bg-white rounded-full shadow-md transform transition-transform duration-300 ${isToggledVSJ ? 'translate-x-2' : 'translate-x-[-1px]'
+                                                    }`}
+                                            ></div>
+                                        </button>
                                     </div>
                                 </span>
                             </div>
