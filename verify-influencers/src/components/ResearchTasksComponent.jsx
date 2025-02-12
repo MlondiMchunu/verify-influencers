@@ -9,7 +9,6 @@ import RevenueAnalysisToggle from './RevenueAnalysisToggle';
 import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 import BackToDashboard from "./BackToDashboard";
 
-
 export default function ResearchTasksComponent() {
     const [isToggled, setIsToggled] = useState(false);
     return (
@@ -19,7 +18,7 @@ export default function ResearchTasksComponent() {
                 <span className="text-white font-bold">Research Tasks</span>
             </div>
 
-            <div className="bg-[#182130] w-full h-[calc(100vh-100px)] mx-auto my-[50px] rounded-sm flex items-center justify-center relative overflow-hidden">
+            <div className="bg-[#182130] w-full mx-auto my-[50px] rounded-sm flex flex-col items-center justify-center relative overflow-hidden p-4">
 
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
@@ -27,7 +26,7 @@ export default function ResearchTasksComponent() {
                 </div>
 
                 {/* Main content divided into two columns */}
-                <div className="mt-16 flex flex-wrap gap-2 justify-center">
+                <div className="mt-16 flex flex-wrap gap-4 justify-center w-full">
 
                     {/* Left column */}
                     <div className="flex-1 flex flex-col max-w-full sm:max-w-[1040px]">
@@ -110,18 +109,23 @@ export default function ResearchTasksComponent() {
                             </div>
                         </div>
                     </div>
+
+                     {/*Scientific Journals*/}
+                <div className="w-full mt-2 px-4">
+                    <p className="text-white text-sm mb-2">Filter by Journals</p>
+                    <div className="grid grid-cols-2  gap-2">
+                        {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
+                            <label
+                                key={index}
+                                className="w-full bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300">
+                                {label}
+                            </label>
+                        ))}
+                    </div>
+                </div>
                 </div>
 
-                {/*Scientific Journals*/}
-                <div className="mt-6 grid grid-cols-2 gap-4 w-full max-w-[1040px] mx-auto">
-                    {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
-                        <label
-                            key={index}
-                            className="w-full bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-sm font-bold rounded-sm cursor-pointer text-center transition-all duration-300 p-4">
-                            {label}
-                        </label>
-                    ))}
-                </div>
+               
             </div>
         </div>
     );
