@@ -35,6 +35,12 @@ export default function ResearchTasksComponent() {
             setSelectedJournals([...selectedJournals, journal]);
         }
     };
+
+     // Function to select all journals
+     const handleSelectAll = () => {
+        setSelectedJournals([...journals]); // Select all journals
+    };
+    
     return (
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
