@@ -135,10 +135,14 @@ export default function ResearchTasksComponent() {
                     {/* Right Column */}
                     <div className="flex-1 flex flex-col max-w-full sm:max-w-[1040px]">
                         {/* Right Column Content */}
-                        <label className="ml-[10px] w-full bg-[#182130] border-1 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300">
-                            <span className="text-sm font-bold block">Discover New</span>
+                        <label className={`ml-[10px] w-full bg-[#182130] border-1 ${discoverNewInfluencers
+                            ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                            : 'border-gray-400' // Default style
+                            } text-white px-[2px] py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300`}
+                            onClick={handleDiscoverNewInfluencers}>
+                            <span className="text-sm font-bold block ">Discover New</span>
                             <span className="text-xs/5 opacity-80 block mt-1">
-                                Find and analyze new health influencers
+                                Find and analyse new health influencers
                             </span>
                         </label>
 
