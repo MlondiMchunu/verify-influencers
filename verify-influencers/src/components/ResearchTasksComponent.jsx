@@ -124,18 +124,24 @@ export default function ResearchTasksComponent() {
                     </div>
 
                      {/*Scientific Journals*/}
-                <div className="w-full mt-2 px-4">
-                    <p className="text-white text-sm mb-2">Filter by Journals</p>
-                    <div className="grid grid-cols-2  gap-2">
-                        {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
-                            <label
-                                key={index}
-                                className="w-full bg-[#182130] border-1 border-gray-400 text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300">
-                                {label}
-                            </label>
-                        ))}
-                    </div>
+                     <div className="w-full mt-2 px-4">
+                <p className="text-white text-sm mb-2">Filter by Journals</p>
+                <div className="grid grid-cols-2 gap-2">
+                    {["PubMed Central", "Nature", "Science", "Cell", "The Lancet", "New England Journal of Medicine", "JAMA Network"].map((label, index) => (
+                        <label
+                            key={index}
+                            className={`w-full bg-[#182130] border-1 ${
+                                selectedJournals.includes(label)
+                                    ? 'border-[#14b983] !bg-[#173438]' // Selected style
+                                    : 'border-gray-600' // Default style
+                            } text-white flex items-center justify-center text-xs py-2 rounded-sm cursor-pointer text-center transition-all duration-300`}
+                            onClick={() => handleJournalSelect(label)}
+                        >
+                            {label}
+                        </label>
+                    ))}
                 </div>
+            </div>
                 </div>
 
                
