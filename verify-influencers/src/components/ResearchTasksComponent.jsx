@@ -238,6 +238,15 @@ export default function ResearchTasksComponent() {
                         </div>
                     </div>
 
+                     {/* Start Research Button */}
+            <div className="flex justify-end mt-4 px-4">
+                <button
+                    className="!bg-[#14735a] text-white !text-xs/3 !text-right py-2 rounded-sm hover:bg-[#12a575] transition-colors duration-300"
+                >
+                    Start Research
+                </button>
+            </div>
+
                 </div>
 
 
