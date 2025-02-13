@@ -1,6 +1,6 @@
 import Menubar from "./MenuBar";
 import React, { useState } from 'react';
-import { Settings } from "lucide-react";
+import { Settings, Plus } from "lucide-react";
 import InfluencerNameComponent from './InfluencerNameComponent';
 import ClaimsPerInfluencer from './ClaimsPerInfluencer';
 import ScientificJournalsComponent from './ScientificJournalsComponent';
@@ -16,7 +16,7 @@ export default function ResearchTasksComponent() {
 
     const [selectSpecificInfluencer, setselectSpecificInfluencer] = useState(false)
 
-    const [discoverNewInfluencers,setdiscoverNewInfluencers] = useState(false)
+    const [discoverNewInfluencers, setdiscoverNewInfluencers] = useState(false)
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
@@ -38,7 +38,7 @@ export default function ResearchTasksComponent() {
         setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influencer select
     };
 
-    const handleDiscoverNewInfluencers = ()=>{
+    const handleDiscoverNewInfluencers = () => {
         setdiscoverNewInfluencers(!discoverNewInfluencers)
     }
 
@@ -238,16 +238,17 @@ export default function ResearchTasksComponent() {
                         </div>
                     </div>
 
-                     {/* Start Research Button */}
-            <div className="flex justify-end mt-4 px-4">
-                <button
-                    className="!bg-[#14735a] text-white !text-xs/3 !text-right py-2 rounded-sm hover:bg-[#12a575] transition-colors duration-300"
-                >
-                    Start Research
-                </button>
-            </div>
+                    {/* Start Research Button */}
+                    <div className="flex justify-end mt-4 w-full">
+                        <button
+                            className={`!bg-[#14735a] text-white !text-xs/5 flex items-center justify-center gap-2 rounded-sm hover:bg-[#12a575] transition-colors duration-300`}
+                        >
+                            <Plus  size={12} className="text=white"/>
+                            Start Research
+                        </button>
+                    </div>
 
-                </div>
+                </div> 
 
 
             </div>
