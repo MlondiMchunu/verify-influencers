@@ -23,6 +23,9 @@ export default function ResearchTasksComponent() {
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
+    const [showInfluencerPage, setShowInfluencerPage] = useState(false);
+
+
 const navigate = useNavigate();
 
     // List of all journals
@@ -79,14 +82,14 @@ const navigate = useNavigate();
         navigate("/influencer-page")
     };
 
-    /*if (showInfluencerPage) {
+    if (showInfluencerPage) {
         return <InfluencerPageComponent influencer={{
             name: "Dr Andrew Huberman",
             profilePicture: "https://example.com/huberman.jpg",
             categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
             description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University..."
         }} />;
-    }*/
+    }
 
     return (
         <div className="relative w-full max-w-full">
