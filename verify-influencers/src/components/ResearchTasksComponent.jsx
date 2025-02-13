@@ -72,9 +72,18 @@ export default function ResearchTasksComponent() {
         setSelectedJournals([]); // Deselect all journals
     };
 
-    const handleStartResearch = () =>{
+    const handleStartResearch = () => {
         setShowInfluencerPage(true);
     };
+
+    if (showInfluencerPage) {
+        return <InfluencerPageComponent influencer={{
+            name: "Dr Andrew Huberman",
+            profilePicture: "https://example.com/huberman.jpg",
+            categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
+            description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University..."
+        }} />;
+    }
 
     return (
         <div className="relative w-full max-w-full">
@@ -249,12 +258,12 @@ export default function ResearchTasksComponent() {
                         <button
                             className={`!bg-[#17715b] h-8 text-white !text-xs/5 flex items-center justify-center gap-2 rounded-xs hover:bg-[#12a575] transition-colors duration-300 px-4`}
                         >
-                            <Plus  size={12} className="text=white"/>
+                            <Plus size={12} className="text=white" />
                             Start Research
                         </button>
                     </div>
 
-                </div> 
+                </div>
 
 
             </div>
