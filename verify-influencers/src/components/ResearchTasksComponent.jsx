@@ -72,6 +72,10 @@ export default function ResearchTasksComponent() {
         setSelectedJournals([]); // Deselect all journals
     };
 
+    const handleStartResearch = () =>{
+        setShowInfluencerPage(true);
+    };
+
     return (
         <div className="relative w-full max-w-full">
             <div className="absolute flex">
