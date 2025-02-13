@@ -3,7 +3,7 @@ import { Search } from "lucide-react"; // import the Search icon
 
 export default function ProductsPerInfluencer() {
   return (
-    <div className="flex items-center justify-center w-full max-w-md mx-auto mt-1">
+    <div className="flex items-center justify-start w-full max-w-md mx-auto mt-1">
       <div className="relative w-full">
         {/* Search input container */}
         <input

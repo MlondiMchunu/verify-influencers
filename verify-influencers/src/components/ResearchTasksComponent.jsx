@@ -133,7 +133,7 @@ export default function ResearchTasksComponent() {
                     </div>
 
                     {/* Right Column */}
-                    <div className="flex-1 flex flex-col max-w-full sm:max-w-[1040px]">
+                    <div className="flex-1 flex flex-col max-w-full sm:max-w-[1040px] w-full">
                         {/* Right Column Content */}
                         <label className={`ml-[10px] w-full bg-[#182130] border-1 ${discoverNewInfluencers
                             ? 'border-[#14b983] !bg-[#173438]' // Selected style
@@ -241,7 +241,7 @@ export default function ResearchTasksComponent() {
                     {/* Start Research Button */}
                     <div className="flex justify-end mt-4 w-full">
                         <button
-                            className={`!bg-[#14735a] text-white !text-xs/5 flex items-center justify-center gap-2 rounded-sm hover:bg-[#12a575] transition-colors duration-300`}
+                            className={`!bg-[#17715b] h-8 text-white !text-xs/5 flex items-center justify-center gap-2 rounded-xs hover:bg-[#12a575] transition-colors duration-300 px-4`}
                         >
                             <Plus  size={12} className="text=white"/>
                             Start Research
