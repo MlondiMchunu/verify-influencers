@@ -8,6 +8,7 @@ import ProductsPerInfluencer from './ProductsPerInfluencer';
 import RevenueAnalysisToggle from './RevenueAnalysisToggle';
 import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 import BackToDashboard from "./BackToDashboard";
+import InfluencerPageComponent from "./InfluencerPageComponent";
 
 export default function ResearchTasksComponent() {
     const [isToggledRA, setIsToggledRA] = useState(false);
