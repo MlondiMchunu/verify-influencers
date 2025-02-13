@@ -8,7 +8,7 @@ export default function InfluencerPageComponent({influencer}) {
                 {/*Left Column - Profile Picture*/}
                 <div className="w-24 h-24 flex-shrink-0">
                     <img 
-                    src={influencer?.profilePicture || "/default-profile.png"}
+                    src={influencer?.profilePicture || "src/assets/andrew.jpg"}
                     alt={influencer?.name}
                     className="w-full h-full rounded-full object-cover"
                     />

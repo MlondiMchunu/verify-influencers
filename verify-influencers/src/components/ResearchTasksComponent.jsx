@@ -9,6 +9,8 @@ import RevenueAnalysisToggle from './RevenueAnalysisToggle';
 import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 import BackToDashboard from "./BackToDashboard";
 import InfluencerPageComponent from "./InfluencerPageComponent";
+import { useNavigate} from "react-router-dom";
+
 
 export default function ResearchTasksComponent() {
     const [isToggledRA, setIsToggledRA] = useState(false);
@@ -21,7 +23,8 @@ export default function ResearchTasksComponent() {
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
-    const [showInfluencerPage, setShowInfluencerPage] = useState(false)
+const navigate = useNavigate();
+
     // List of all journals
     const journals = [
         "PubMed Central",
@@ -73,17 +76,17 @@ export default function ResearchTasksComponent() {
     };
 
     const handleStartResearch = () => {
-        setShowInfluencerPage(true);
+        navigate("/influencer-page")
     };
 
-    if (showInfluencerPage) {
+    /*if (showInfluencerPage) {
         return <InfluencerPageComponent influencer={{
             name: "Dr Andrew Huberman",
             profilePicture: "https://example.com/huberman.jpg",
             categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
             description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University..."
         }} />;
-    }
+    }*/
 
     return (
         <div className="relative w-full max-w-full">
@@ -255,7 +258,7 @@ export default function ResearchTasksComponent() {
 
                     {/* Start Research Button */}
                     <div className="flex justify-end mt-4 w-full">
-                        <button
+                        <button onClick={handleStartResearch}
                             className={`!bg-[#17715b] h-8 text-white !text-xs/5 flex items-center justify-center gap-2 rounded-xs hover:bg-[#12a575] transition-colors duration-300 px-4`}
                         >
                             <Plus size={12} className="text=white" />

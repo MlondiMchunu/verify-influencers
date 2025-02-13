@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Shield } from "lucide-react";
 import Leaderboard from "./Leaderboard";
 import ResearchTasksComponent from "./ResearchTasksComponent";
+import InfluencerPageComponent from "./InfluencerPageComponent";
 
 const Menubar = () => {
   return (
@@ -35,6 +36,7 @@ const Menubar = () => {
         <Route path="/about" element={<div>About Page</div>} />
         <Route path="/contact" element={<div>Contact Page</div>} />
         <Route path="/admin" element={<div>Admin Page</div>} />
+        <Route path="/influencer-page" element={<InfluencerPageComponent/>} />
       </Routes>
     </Router>
   );
