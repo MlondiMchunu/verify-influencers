@@ -39,6 +39,17 @@ const navigate = useNavigate();
         "JAMA Network",
     ];
 
+    const influencerData = {
+        name: "Dr. Andrew Huberman",
+        profilePicture: "src/assets/andrew.jpg", // Replace with actual URL
+        categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
+        description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University.",
+        trustScore: 85, // Example: 85% Trust Score
+        yearlyRevenue: 72, // Example: 72% Yearly Revenue
+        products: 15, // Example: 15 products sold
+        followers: "2.5M", // Example: 2.5 Million followers
+    };
+
     // List of time ranges
     const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
 
@@ -83,12 +94,7 @@ const navigate = useNavigate();
     };
 
     if (showInfluencerPage) {
-        return <InfluencerPageComponent influencer={{
-            name: "Dr Andrew Huberman",
-            profilePicture: "https://example.com/huberman.jpg",
-            categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
-            description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University..."
-        }} />;
+        return <InfluencerPageComponent influencer={influencerData} />;
     }
 
     return (
