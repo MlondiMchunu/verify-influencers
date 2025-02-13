@@ -17,7 +17,7 @@ export default function InfluencerPageComponent({ influencer }) {
                     {/*Right Column -Info */}
                     <div className="flex-1">
                         {/*Influencer Name*/}
-                        <h2 className="text-2xl font-bold">{influencer?.name || "Influencer Name"}</h2>
+                        <h2 className="text-xl font-bold">{influencer?.name || "Influencer Name"}</h2>
 
                         {/*Categories*/}
                         <div className="mt-3 flex-wrap gap-2">
@@ -25,13 +25,18 @@ export default function InfluencerPageComponent({ influencer }) {
                                 influencer.categories.map((category,index)=>(
                                     <button
                                     key={index}
-                                    className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm">
+                                    className="px-3 py-1 bg-blue-600 text-white rounded-md text-xs/5">
                                         {category}
                                     </button>
                                 ))
-                            ) : (<p className="text-gray-400">No categories available</p>)
+                            ) : (<p className="text-gray-400 text-xs/5">No categories available</p>)
                             }
                         </div>
+
+                        {/*Profile Description */}
+                        <p className="mt-1 text-gray-300 text-xs/5">
+                            {influencer?.description || "No profile description available. No profile description available. No profile description available"}
+                        </p>
                     </div>
 
                 </div>
