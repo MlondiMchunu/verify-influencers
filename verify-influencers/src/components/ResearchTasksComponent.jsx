@@ -21,6 +21,7 @@ export default function ResearchTasksComponent() {
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
+    const [showInfluencerPage, setShowInfluencerPage] = useState(false)
     // List of all journals
     const journals = [
         "PubMed Central",
