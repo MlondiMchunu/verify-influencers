@@ -195,12 +195,12 @@ export default function ResearchTasksComponent() {
                         {/**Influencer name */}
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Influencer Name</p></div>
                         <div>
-                            <InfluencerNameComponent value={influencerName} onChange={(e)=>setInfluencerName(e.target.value)}/>
+                            <InfluencerNameComponent value={influencerName} onChange={(e) => setInfluencerName(e.target.value)} />
                         </div>
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Claims to Analyze Per Influencer</p></div>
                         <div>
-                            <ClaimsPerInfluencer value={claimsToAnalyze} onChange={(e)=>setClaimsToAnalyze(e.target.value)}/>
+                            <ClaimsPerInfluencer value={claimsToAnalyze} onChange={(e) => setClaimsToAnalyze(e.target.value)} />
                         </div>
                         <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px] text-left">Recommended: 50-100 claims for comprehensive analysis</p></div>
 
@@ -223,7 +223,7 @@ export default function ResearchTasksComponent() {
 
                         <div className="text-white text-xs/5 opacity-80 mt-[10px]" ><p className="ml-[5px] text-left">Products to Find Per Influencer</p></div>
                         <div>
-                            <ProductsPerInfluencer value={productsToFind} onChange={(e)=>setProductsToFind(e.target.value)}/>
+                            <ProductsPerInfluencer value={productsToFind} onChange={(e) => setProductsToFind(e.target.value)} />
                         </div>
                         <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px] text-left">Set to 0 to skip product research</p></div>
 
@@ -250,7 +250,7 @@ export default function ResearchTasksComponent() {
                                     </div>
                                 </span>
                             </div>
-
+                            {/**verify with Scientific Journals toggle*/}
                             <div>
                                 <span className="flex flex-row">
                                     <label className="ml-[10px] w-full bg-[#182130] border-0 border-gray-400 text-white px-6 py-4 rounded-sm mb-6 flex flex-col items-left justify-center cursor-pointer text-left transition-all duration-300">
@@ -284,7 +284,7 @@ export default function ResearchTasksComponent() {
                             <p className="text-white text-xs/5 text-left">Scientific Journals</p> {/* Align text to the left */}
                             <div className="flex gap-2">
                                 <button
-                                    onClick={handleSelectAll}
+                                    onClick={()=>setSelectedJournals([...journals])}
                                     className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
                                 >
                                     Select All
