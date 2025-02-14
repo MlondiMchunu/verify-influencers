@@ -200,7 +200,7 @@ export default function ResearchTasksComponent() {
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Claims to Analyze Per Influencer</p></div>
                         <div>
-                            <ClaimsPerInfluencer />
+                            <ClaimsPerInfluencer value={claimsToAnalyze} onChange={(e)=>setClaimsToAnalyze(e.target.value)}/>
                         </div>
                         <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px] text-left">Recommended: 50-100 claims for comprehensive analysis</p></div>
 
