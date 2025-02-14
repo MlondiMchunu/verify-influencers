@@ -9,7 +9,7 @@ import RevenueAnalysisToggle from './RevenueAnalysisToggle';
 import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 import BackToDashboard from "./BackToDashboard";
 import InfluencerPageComponent from "./InfluencerPageComponent";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ResearchTasksComponent() {
@@ -24,10 +24,10 @@ export default function ResearchTasksComponent() {
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
     const [showInfluencerPage, setShowInfluencerPage] = useState(false);
-    const [influencerData, setInfluencerData] = useState(null)
+    //const [influencerData, setInfluencerData] = useState(null)
 
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // List of all journals
     const journals = [
@@ -40,7 +40,7 @@ const navigate = useNavigate();
         "JAMA Network",
     ];
 
-    const mockInfluencer = {
+    const influencerData = {
         name: "Dr. Andrew Huberman",
         profilePicture: "src/assets/andrew.jpg", // Replace with actual URL
         categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
@@ -91,13 +91,13 @@ const navigate = useNavigate();
     };
 
     const handleStartResearch = () => {
-       
-        navigate("/influencer-page",{state:{influencer:influencerData}});
+
+        navigate("/influencer-page", { state: { influencer: influencerData } });
     };
 
-    if (showInfluencerPage) {
-        return <InfluencerPageComponent influencer={influencerData}/>;
-    }
+    /*if (showInfluencerPage) {
+        return <InfluencerPageComponent influencer={influencerData} />;
+    }*/
 
     return (
         <div className="relative w-full max-w-full">

@@ -1,4 +1,8 @@
-export default function InfluencerPageComponent({ influencer}) {
+import {useLocation} from "react-router-dom";
+
+export default function InfluencerPageComponent() {
+
+    const location = useLocation();
 
     
     return (
