@@ -62,33 +62,49 @@ export default function ResearchTasksComponent() {
             }
         };
 
-        async function fetchData(prompt){
-        try {
-            const response = await fetch(apiUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer Bearer ${apiKey}`,
-                },
-                body: JSON.stringify({
-                    model: "gpt-4o-mini",
-                    messages: [{ role: "user", content: prompt }],
-                    max_tokens: 1000,
-                }),
-            });
 
-            if (!response.ok) {
-                throw new Error("Failed to fetch data from the AI API");
+        useEffect(() => {
+            async function fetchData(prompt) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer Bearer ${apiKey}`,
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4o-mini",
+                            messages: [{ role: "user", content: prompt }],
+                            max_tokens: 1000,
+                        }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch data from the AI API");
+                    }
+
+                    const data = await response.json();
+                    localStorage.setItem("selectedInfluencer", JSON.stringify(data));
+                    navigate("/influencer-page", { state: { influencer: data } });
+                } catch (error) {
+                    console.error("Error fetching data from the AI API:", error);
+                    alert("An error occurred while fetching data. Please try again.");
+                }
             }
-
-            const data = await response.json();
-            localStorage.setItem("selectedInfluencer", JSON.stringify(data));
-            navigate("/influencer-page", { state: { influencer: data } });
-        } catch (error) {
-            console.error("Error fetching data from the AI API:", error);
-            alert("An error occurred while fetching data. Please try again.");
-        }
-    }
+            fetchData(`Provide ONLY a JSON array of health influencers with these fields:
+            - "name" (string)
+            - "category" (string, one of: "Nutrition", "Fitness", "Medicine", "Mental Health")
+            - "trustScore" (number between 0-100)
+            - "trend" (string, e.g., "Upward" or "Stable")
+            - "followers" (number)
+            - "verifiedClaims" (number)
+            
+            Do NOT include explanations, markdown, or formatting—return raw JSON only.`).then((data) => {
+                if (data) {
+                    console.log("AI Response:", data.choices[0].message.content);
+                }
+            });
+        }, []);
     };
 
     return (
