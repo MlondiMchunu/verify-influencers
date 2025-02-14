@@ -1,10 +1,22 @@
-import {useLocation} from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 export default function InfluencerPageComponent() {
 
-    const location = useLocation();
 
-    
+
+    const location = useLocation();
+    let influencer = location.state?.influencer;
+
+    if (!InfluencerPageComponent) {
+        const storedData = localStorage.getItem("selectedInfluencer");
+        if (storedData) {
+            influencer = JSON.parse(storedData)
+        }
+    }
+
+    console.log("Received influencer data:", location.state?.influencer)
+
     return (
         <>
             <div className="w-full text-white text-left  max-w-[1200px] mx-auto bg-[#101727] p-6 rounded-lg shadow-md">
@@ -23,15 +35,15 @@ export default function InfluencerPageComponent() {
                     {/*Right Column -Info */}
                     <div className="flex-1">
                         {/*Influencer Name*/}
-                        <h2 className="text-xl font-bold">{influencer?.name || "Influencer Name"}</h2>
+                        <h2 className="text-xl font-bold">{influencer.name || "Influencer Name"}</h2>
 
                         {/*Categories*/}
                         <div className="mt-3 flex-wrap gap-2">
-                            {influencer.categories.length > 0 ? (
+                            {influencer.categories?.length > 0 ? (
                                 influencer.categories.map((category, index) => (
                                     <button
                                         key={index}
-                                        className="px-3 py-1 bg-blue-600 text-white rounded-md text-xs/5">
+                                        className="px-3 py-1 mr-4 !bg-[#182130] text-white !rounded-full !text-xs/3">
                                         {category}
                                     </button>
                                 ))
@@ -51,26 +63,34 @@ export default function InfluencerPageComponent() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-center">
                     {/* Trust Score */}
                     <div className="p-4 bg-[#182130] rounded-lg">
-                        <p className="text-xs text-gray-400">Trust Score</p>
-                        <p className="text-lg font-bold text-[#14b983]">{influencer.trustScore}%</p>
+                        <p className="text-xs font-bold text-white text-left">Trust Score</p>
+                        <p className="text-lg font-bold text-[#14b983] text-left">{influencer.trustScore}%</p>
+                        <p className="text-xs/2  text-gray-400 mt-2">Based on x verified claims</p>
+
                     </div>
 
                     {/* Yearly Revenue */}
-                    <div className="p-4 bg-[#182130] rounded-lg">
-                        <p className="text-xs text-gray-400">Yearly Revenue</p>
-                        <p className="text-lg font-bold text-[#14b983]">{influencer.yearlyRevenue}%</p>
+                    <div className="p-4 bg-[#182130] rounded-lg text-left">
+                        <p className="text-xs font-bold text-white text-left">Yearly Revenue</p>
+                        <p className="text-lg font-bold text-[#14b983] ">{influencer.yearlyRevenue}%</p>
+                        <p className="text-xs/2  text-gray-400 mt-2">Estimated earnings</p>
+
                     </div>
 
                     {/* Products */}
-                    <div className="p-4 bg-[#182130] rounded-lg">
-                        <p className="text-xs text-gray-400">Products</p>
+                    <div className="p-4 bg-[#182130] rounded-lg text-left">
+                        <p className="text-xs font-bold text-white">Products</p>
                         <p className="text-lg font-bold text-[#14b983]">{influencer.products}</p>
+                        <p className="text-xs/2  text-gray-400 mt-2">Recommended products</p>
+
                     </div>
 
                     {/* Followers */}
-                    <div className="p-4 bg-[#182130] rounded-lg">
-                        <p className="text-xs text-gray-400">Followers</p>
+                    <div className="p-4 bg-[#182130] rounded-lg text-left">
+                        <p className="text-xs font-bold text-white">Followers</p>
                         <p className="text-lg font-bold text-[#14b983]">{influencer.followers}</p>
+                        <p className="text-xs/2  text-gray-400 mt-2">Total following</p>
+
                     </div>
                 </div>
 

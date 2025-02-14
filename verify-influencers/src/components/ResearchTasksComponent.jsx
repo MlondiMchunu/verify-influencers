@@ -3,12 +3,8 @@ import React, { useState } from 'react';
 import { Settings, Plus } from "lucide-react";
 import InfluencerNameComponent from './InfluencerNameComponent';
 import ClaimsPerInfluencer from './ClaimsPerInfluencer';
-import ScientificJournalsComponent from './ScientificJournalsComponent';
 import ProductsPerInfluencer from './ProductsPerInfluencer';
-import RevenueAnalysisToggle from './RevenueAnalysisToggle';
-import VerifyScientificJournalsToggle from './VerifyScientificJournalsToggle';
 import BackToDashboard from "./BackToDashboard";
-import InfluencerPageComponent from "./InfluencerPageComponent";
 import { useNavigate } from "react-router-dom";
 
 
@@ -91,7 +87,7 @@ export default function ResearchTasksComponent() {
     };
 
     const handleStartResearch = () => {
-
+        localStorage.setItem("selectedInfluencer", JSON.stringify(influencerData));
         navigate("/influencer-page", { state: { influencer: influencerData } });
     };
 
