@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Settings, Plus } from "lucide-react";
 import InfluencerNameComponent from "./InfluencerNameComponent";
 import ClaimsPerInfluencer from "./ClaimsPerInfluencer";
@@ -40,6 +40,16 @@ export default function ResearchTasksComponent() {
 
     const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
 
+    const handleJournalSelect = (journal) => {
+        if (selectedJournals.includes(journal)) {
+            // If the journal is already selected, remove it
+            setSelectedJournals(selectedJournals.filter((j) => j !== journal));
+        } else {
+            // If the journal is not selected, add it
+            setSelectedJournals([...selectedJournals, journal]);
+        }
+    };
+
     const handleStartResearch = async () => {
         const researchData = {
             influencerName,
@@ -52,15 +62,7 @@ export default function ResearchTasksComponent() {
         };
 
         // Function to handle journal selection
-        const handleJournalSelect = (journal) => {
-            if (selectedJournals.includes(journal)) {
-                // If the journal is already selected, remove it
-                setSelectedJournals(selectedJournals.filter((j) => j !== journal));
-            } else {
-                // If the journal is not selected, add it
-                setSelectedJournals([...selectedJournals, journal]);
-            }
-        };
+        handleJournalSelect();
 
 
         useEffect(() => {
