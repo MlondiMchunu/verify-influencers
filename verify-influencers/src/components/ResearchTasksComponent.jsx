@@ -82,8 +82,11 @@ export default function ResearchTasksComponent() {
                 body: JSON.stringify(researchData),
             });
             if(!response.ok){
-                throw new Error("Failed to fetch data from AI API")
+                throw new Error("Failed to fetch data from AI API");
             }
+            const data = await response.json();
+            // Save the API response to localStorage and navigate to the InfluencerPageComponent
+        localStorage.setItem("selectedInfluencer",JSON.stringify(data));
         }
     }
 
