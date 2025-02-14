@@ -72,21 +72,24 @@ export default function ResearchTasksComponent() {
             verifyWithScientificJournals: isToggledVSJ
         };
 
-        try{
+        try {
             //call the api
-            const response = await fetch(apiUrl,{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json",
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(researchData),
             });
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error("Failed to fetch data from AI API");
             }
             const data = await response.json();
             // Save the API response to localStorage and navigate to the InfluencerPageComponent
-        localStorage.setItem("selectedInfluencer",JSON.stringify(data));
+            localStorage.setItem("selectedInfluencer", JSON.stringify(data));
+            navigate("/influencer-page", { state: { influencer: data } });
+        } catch (error) {
+            console.log("Error fetching data from AI API:", error)
         }
     }
 
