@@ -223,7 +223,7 @@ export default function ResearchTasksComponent() {
 
                         <div className="text-white text-xs/5 opacity-80 mt-[10px]" ><p className="ml-[5px] text-left">Products to Find Per Influencer</p></div>
                         <div>
-                            <ProductsPerInfluencer />
+                            <ProductsPerInfluencer value={productsToFind} onChange={(e)=>setProductsToFind(e.target.value)}/>
                         </div>
                         <div className="text-white text-xs/4 opacity-40 mt-[5px]" ><p className="ml-[5px] text-left">Set to 0 to skip product research</p></div>
 
