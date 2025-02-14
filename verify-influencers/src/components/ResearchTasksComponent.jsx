@@ -290,7 +290,7 @@ export default function ResearchTasksComponent() {
                                     Select All
                                 </button> |
                                 <button
-                                    onClick={handleDeselectAll}
+                                    onClick={()=>setSelectedJournals([])}
                                     className="!text-xs/5 text-[#14b983] hover:underline focus:outline-none !bg-transparent"
                                 >
                                     Deselect All
