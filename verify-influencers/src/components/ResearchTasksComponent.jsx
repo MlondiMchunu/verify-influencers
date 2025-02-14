@@ -214,7 +214,7 @@ export default function ResearchTasksComponent() {
                             ? 'border-[#14b983] !bg-[#173438]' // Selected style
                             : 'border-gray-400' // Default style
                             } text-white px-[2px] py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300`}
-                            onClick={setdiscoverNewInfluencers}>
+                            onClick={setdiscoverNewInfluencers(!discoverNewInfluencers)}>
                             <span className="text-sm font-bold block ">Discover New</span>
                             <span className="text-xs/5 opacity-80 block mt-1">
                                 Find and analyse new health influencers
