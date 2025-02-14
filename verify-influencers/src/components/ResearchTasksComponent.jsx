@@ -89,9 +89,10 @@ export default function ResearchTasksComponent() {
             localStorage.setItem("selectedInfluencer", JSON.stringify(data));
             navigate("/influencer-page", { state: { influencer: data } });
         } catch (error) {
-            console.log("Error fetching data from AI API:", error)
+            console.log("Error fetching data from AI API:", error);
+            alert("An error occured while fetching data. Please try again.");
         }
-    }
+    };
 
     //const handleStartResearch = () => {
     //  localStorage.setItem("selectedInfluencer", JSON.stringify(influencerData));
