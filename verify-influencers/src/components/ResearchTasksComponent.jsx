@@ -7,6 +7,9 @@ import ProductsPerInfluencer from './ProductsPerInfluencer';
 import BackToDashboard from "./BackToDashboard";
 import { useNavigate } from "react-router-dom";
 
+const apiKey = import.meta.env.VITE_API_KEY;
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 export default function ResearchTasksComponent() {
     const [isToggledRA, setIsToggledRA] = useState(false);//revenue analysis toggle
@@ -68,6 +71,11 @@ export default function ResearchTasksComponent() {
             includeRevenueAnalysis: isToggledRA,
             verifyWithScientificJournals: isToggledVSJ
         };
+
+        try{
+            //call the api
+            const response = await fetch()
+        }
     }
 
     //const handleStartResearch = () => {
