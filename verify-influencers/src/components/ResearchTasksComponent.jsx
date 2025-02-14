@@ -192,9 +192,10 @@ export default function ResearchTasksComponent() {
 
                         </div>
 
+                        {/**Influencer name */}
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Influencer Name</p></div>
                         <div>
-                            <InfluencerNameComponent />
+                            <InfluencerNameComponent value={influencerName} />
                         </div>
 
                         <div className="text-white text-xs/5 opacity-80 mt-[20px]" ><p className="ml-[5px] text-left">Claims to Analyze Per Influencer</p></div>
