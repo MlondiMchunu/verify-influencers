@@ -21,11 +21,11 @@ export default function ResearchTasksComponent() {
 
     const [selectedTimeRange, setSelectedTimeRange] = useState(null) //state to track selected time range
 
-const [influencerName,setInfluencerName] = useState("");//input influencer name
+    const [influencerName, setInfluencerName] = useState("");//input influencer name
 
-const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);//number of claims to analyze
+    const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);//number of claims to analyze
 
-const [productsToFind, setProductsToFind] = useState(0); //number of products to find
+    const [productsToFind, setProductsToFind] = useState(0); //number of products to find
 
     const [showInfluencerPage, setShowInfluencerPage] = useState(false);
     //const [influencerData, setInfluencerData] = useState(null)
@@ -44,19 +44,37 @@ const [productsToFind, setProductsToFind] = useState(0); //number of products to
         "JAMA Network",
     ];
 
-    const influencerData = {
-        name: "Dr. Andrew Huberman",
-        profilePicture: "src/assets/andrew.jpg", // Replace with actual URL
-        categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
-        description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University.",
-        trustScore: 85, // Example: 85% Trust Score
-        yearlyRevenue: 72, // Example: 72% Yearly Revenue
-        products: 15, // Example: 15 products sold
-        followers: "2.5M", // Example: 2.5 Million followers
-    };
-
     // List of time ranges
     const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
+
+    /*     const influencerData = {
+            name: "Dr. Andrew Huberman",
+            profilePicture: "src/assets/andrew.jpg", // Replace with actual URL
+            categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
+            description: "Dr. Huberman is a neuroscientist and tenured professor at Stanford University.",
+            trustScore: 85, // Example: 85% Trust Score
+            yearlyRevenue: 72, // Example: 72% Yearly Revenue
+            products: 15, // Example: 15 products sold
+            followers: "2.5M", // Example: 2.5 Million followers
+        }; */
+
+    const handleStartResearch = async () => {
+        //prepare the data to send to the AI API
+        const researchData = {
+            influencerName,
+            timeRange: selectedTimeRange,
+            claimsToAnalyze,
+            productsToFind,
+            includeRevenueAnalysis: isToggledRA,
+            verifyWithScientificJournals: isToggledVSJ
+        };
+    }
+
+    //const handleStartResearch = () => {
+    //  localStorage.setItem("selectedInfluencer", JSON.stringify(influencerData));
+    //navigate("/influencer-page", { state: { influencer: influencerData } });
+    //};
+
 
     const handleSpecificInfluencerSelect = () => {
         setselectSpecificInfluencer(!selectSpecificInfluencer)//toggle specific influencer select
@@ -91,11 +109,6 @@ const [productsToFind, setProductsToFind] = useState(0); //number of products to
     // Function to deselect all journals
     const handleDeselectAll = () => {
         setSelectedJournals([]); // Deselect all journals
-    };
-
-    const handleStartResearch = () => {
-        localStorage.setItem("selectedInfluencer", JSON.stringify(influencerData));
-        navigate("/influencer-page", { state: { influencer: influencerData } });
     };
 
     /*if (showInfluencerPage) {
