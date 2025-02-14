@@ -74,7 +74,16 @@ export default function ResearchTasksComponent() {
 
         try{
             //call the api
-            const response = await fetch()
+            const response = await fetch(apiUrl,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify(researchData),
+            });
+            if(!response.ok){
+                throw new Error("Failed to fetch data from AI API")
+            }
         }
     }
 
