@@ -9,15 +9,23 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function ResearchTasksComponent() {
-    const [isToggledRA, setIsToggledRA] = useState(false);
+    const [isToggledRA, setIsToggledRA] = useState(false);//revenue analysis toggle
 
-    const [isToggledVSJ, setIsToggledVSJ] = useState(false);
+    const [isToggledVSJ, setIsToggledVSJ] = useState(false);// verify scientific journals toggle
 
-    const [selectSpecificInfluencer, setselectSpecificInfluencer] = useState(false)
+    const [selectSpecificInfluencer, setselectSpecificInfluencer] = useState(false)// specific influencer toggle
 
-    const [discoverNewInfluencers, setdiscoverNewInfluencers] = useState(false)
+    const [discoverNewInfluencers, setdiscoverNewInfluencers] = useState(false)// discover new influencers toggle
 
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
+
+    const [selectedTimeRange, setSelectedTimeRange] = useState(null) //state to track selected time range
+
+const [influencerName,setInfluencerName] = useState("");//input influencer name
+
+const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);//number of claims to analyze
+
+const [productsToFind, setProductsToFind] = useState(0); //number of products to find
 
     const [showInfluencerPage, setShowInfluencerPage] = useState(false);
     //const [influencerData, setInfluencerData] = useState(null)
@@ -74,7 +82,6 @@ export default function ResearchTasksComponent() {
         }
     };
 
-    const [selectedTimeRange, setSelectedTimeRange] = useState(null) //state to track selected time range
 
     // Function to select all journals
     const handleSelectAll = () => {
