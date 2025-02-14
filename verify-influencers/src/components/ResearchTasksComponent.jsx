@@ -24,6 +24,7 @@ export default function ResearchTasksComponent() {
     const [selectedJournals, setSelectedJournals] = useState([]); // State to track selected journals
 
     const [showInfluencerPage, setShowInfluencerPage] = useState(false);
+    const [influencerData, setInfluencerData] = useState(null)
 
 
 const navigate = useNavigate();
@@ -39,7 +40,7 @@ const navigate = useNavigate();
         "JAMA Network",
     ];
 
-    const influencerData = {
+    const mockInfluencer = {
         name: "Dr. Andrew Huberman",
         profilePicture: "src/assets/andrew.jpg", // Replace with actual URL
         categories: ["Neuroscience", "Sleep", "Performance", "Hormones", "Stress Management"],
@@ -90,11 +91,12 @@ const navigate = useNavigate();
     };
 
     const handleStartResearch = () => {
-        navigate("/influencer-page")
+       
+        navigate("/influencer-page",{state:{influencer:influencerData}});
     };
 
     if (showInfluencerPage) {
-        return <InfluencerPageComponent influencer={influencerData} />;
+        return <InfluencerPageComponent influencer={influencerData}/>;
     }
 
     return (
