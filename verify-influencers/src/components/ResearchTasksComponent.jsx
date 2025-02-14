@@ -146,14 +146,17 @@ export default function ResearchTasksComponent() {
                 <span className="text-white font-bold">Research Tasks</span>
             </div>
 
+            {/*Main Content */}
+
             <div className="bg-[#182130] w-full mx-auto my-[50px] rounded-sm flex flex-col items-center justify-center relative overflow-hidden p-4">
 
+                {/**Settings header */}
                 <div className="absolute top-0 left-0 flex items-center gap-2 p-4">
                     <Settings className="w-3 h-3 text-[#1db687]" />
                     <p className="text-white text-sm font-bold">Research Configuration</p>
                 </div>
 
-                {/* Main content divided into two columns */}
+                {/* Two Column Layout */}
                 <div className="mt-16 flex flex-wrap gap-4 justify-center w-full">
 
                     {/* Left column */}
@@ -163,13 +166,14 @@ export default function ResearchTasksComponent() {
                             ? 'border-[#14b983] !bg-[#173438]' // Selected style
                             : 'border-gray-400' // Default style
                             } text-white px-[2px] py-4 rounded-sm mb-6 mt-[5px] flex flex-col items-center justify-center cursor-pointer text-center transition-all duration-300`}
-                            onClick={handleSpecificInfluencerSelect}>
+                            onClick={setselectSpecificInfluencer(!selectSpecificInfluencer)}>
                             <span className="text-sm font-bold block ">Specific Influencer</span>
                             <span className="text-xs/5 opacity-80 block mt-1">
                                 Research a known health influencer by name
                             </span>
                         </label>
 
+                        {/**Time range Selection*/}
                         <div className="text-white text-xs/5 opacity-80 text-left"><p className="ml-[5px]">Time Range</p></div>
                         <div className="ml-[10px] grid grid-cols-2 gap-1 w-full max-w-[1040px] opacity-80">
 
@@ -180,7 +184,7 @@ export default function ResearchTasksComponent() {
                                         ? 'border-[#14b983] !bg-[#173438]' // Selected style
                                         : 'border-gray-400' // Default style
                                         } text-white flex items-center justify-center text-xs/5 rounded-sm cursor-pointer text-center transition-all duration-300`}
-                                    onClick={() => handleTimeRangeSelect(range)}
+                                    onClick={() => setSelectedTimeRange(range)}
                                 >
                                     {range}
                                 </label>
