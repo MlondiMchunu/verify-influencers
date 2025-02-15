@@ -20,7 +20,7 @@ export default function InfluencerPageComponent() {
          }
      }*/
 
-    console.log("Received influencer data:", location.state?.influencer)
+    console.log("Received influencer data:", influencer)
 
     return (
         <>
