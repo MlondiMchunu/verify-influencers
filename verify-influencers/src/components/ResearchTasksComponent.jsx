@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Settings, Plus } from "lucide-react";
-import InfluencerNameComponent from "./InfluencerNameComponent";
-import ClaimsPerInfluencer from "./ClaimsPerInfluencer";
-import ProductsPerInfluencer from "./ProductsPerInfluencer";
 import BackToDashboard from "./BackToDashboard";
 import { useNavigate } from "react-router-dom";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiUrl = import.meta.env.VITE_API_URL;
-
-
 
 console.log("API KEY:", import.meta.env.VITE_API_KEY);
 console.log("API URL:", import.meta.env.VITE_API_URL);
@@ -25,7 +20,6 @@ export default function ResearchTasksComponent() {
     const [claimsToAnalyze, setClaimsToAnalyze] = useState(0);
     const [productsToFind, setProductsToFind] = useState(0);
 
-
     const navigate = useNavigate();
 
     const journals = [
@@ -40,6 +34,7 @@ export default function ResearchTasksComponent() {
 
     const timeRanges = ["Last Week", "Last Month", "Last Year", "All Time"];
 
+    // Function to handle journal selection
     const handleJournalSelect = (journal) => {
         if (selectedJournals.includes(journal)) {
             // If the journal is already selected, remove it
@@ -50,6 +45,7 @@ export default function ResearchTasksComponent() {
         }
     };
 
+    // Function to start research and call the AI API
     const handleStartResearch = async () => {
         const researchData = {
             influencerName,
@@ -61,49 +57,41 @@ export default function ResearchTasksComponent() {
             selectedJournals,
         };
 
-        // Function to handle journal selection
-        handleJournalSelect();
+        const prompt = `
+            Analyze the health influencer "${influencerName}" within the time range of "${selectedTimeRange}".
+            Identify ${claimsToAnalyze} health claims and ${productsToFind} products they promote.
+            ${isToggledRA ? "Include revenue analysis." : ""}
+            ${isToggledVSJ ? `Verify claims against these journals: ${selectedJournals.join(", ")}.` : ""}
+        `;
 
-
-        useEffect(() => {
-            async function fetchData(prompt) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer Bearer ${apiKey}`,
-                        },
-                        body: JSON.stringify({
-                            model: "gpt-4o-mini",
-                            messages: [{ role: "user", content: prompt }],
-                            max_tokens: 1000,
-                        }),
-                    });
-
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch data from the AI API");
-                    }
-
-                    const data = await response.json();
-                    localStorage.setItem("selectedInfluencer", JSON.stringify(data));
-                    navigate("/influencer-page", { state: { influencer: data } });
-                } catch (error) {
-                    console.error("Error fetching data from the AI API:", error);
-                    alert("An error occurred while fetching data. Please try again.");
-                }
-            }
-            fetchData(`
-        Analyze the health influencer "${influencerName}" within the time range of "${selectedTimeRange}".
-        Identify ${claimsToAnalyze} health claims and ${productsToFind} products they promote.
-        ${isToggledRA ? "Include revenue analysis." : ""}
-        ${isToggledVSJ ? `Verify claims against these journals: ${selectedJournals.join(", ")}.` : ""}
-    `).then((data) => {
-                if (data) {
-                    console.log("AI Response:", data.choices[0].message.content);
-                }
+        try {
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${apiKey}`, // Fixed Authorization header
+                },
+                body: JSON.stringify({
+                    model: "gpt-4o-mini", // Replace with the correct model name
+                    messages: [{ role: "user", content: prompt }],
+                    max_tokens: 1000,
+                }),
             });
-        }, []);
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch data from the AI API");
+            }
+
+            const data = await response.json();
+            console.log("AI Response:", data.choices[0].message.content);
+
+            // Save the API response to localStorage and navigate to the InfluencerPageComponent
+            localStorage.setItem("selectedInfluencer", JSON.stringify(data));
+            navigate("/influencer-page", { state: { influencer: data } });
+        } catch (error) {
+            console.error("Error fetching data from the AI API:", error);
+            alert("An error occurred while fetching data. Please try again.");
+        }
     };
 
     return (
