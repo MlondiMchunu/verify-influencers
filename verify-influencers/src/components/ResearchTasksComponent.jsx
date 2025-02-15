@@ -93,15 +93,12 @@ export default function ResearchTasksComponent() {
                     alert("An error occurred while fetching data. Please try again.");
                 }
             }
-            fetchData(`Provide ONLY a JSON array of health influencers with these fields:
-            - "name" (string)
-            - "category" (string, one of: "Nutrition", "Fitness", "Medicine", "Mental Health")
-            - "trustScore" (number between 0-100)
-            - "trend" (string, e.g., "Upward" or "Stable")
-            - "followers" (number)
-            - "verifiedClaims" (number)
-            
-            Do NOT include explanations, markdown, or formatting—return raw JSON only.`).then((data) => {
+            fetchData(`
+        Analyze the health influencer "${influencerName}" within the time range of "${selectedTimeRange}".
+        Identify ${claimsToAnalyze} health claims and ${productsToFind} products they promote.
+        ${isToggledRA ? "Include revenue analysis." : ""}
+        ${isToggledVSJ ? `Verify claims against these journals: ${selectedJournals.join(", ")}.` : ""}
+    `).then((data) => {
                 if (data) {
                     console.log("AI Response:", data.choices[0].message.content);
                 }
