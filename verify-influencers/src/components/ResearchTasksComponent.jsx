@@ -141,9 +141,21 @@ Analyze recent health-related content from "${influencerName}" within the "${sel
             const data = await response.json();
             console.log("AI Response:", data.choices[0].message.content);
 
+            // Transform the AI response into the expected structure
+            const transformedData = {
+                profilePicture: "src/assets/andrew.jpg", // Default image or fetch from API if available
+                name: data.influencer?.name || influencerName,
+                categories: [data.influencer?.category || "Health"],
+                description: data.analysisSummary || "No description available.",
+                trustScore: data.influencer?.trustScore || 0,
+                yearlyRevenue: data.estimatedRevenue || 0,
+                products: data.products?.length || 0,
+                followers: data.influencer?.followers || 0,
+            };
+
             // Save the API response to localStorage and navigate to the InfluencerPageComponent
-            localStorage.setItem("selectedInfluencer", JSON.stringify(data));
-            navigate("/influencer-page", { state: { influencer: data } });
+            localStorage.setItem("selectedInfluencer", JSON.stringify(transformedData));
+            navigate("/influencer-page", { state: { influencer: transformedData } });
         } catch (error) {
             console.error("Error fetching data from the AI API:", error);
             alert("An error occurred while fetching data. Please try again.");

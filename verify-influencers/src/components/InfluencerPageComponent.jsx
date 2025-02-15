@@ -24,6 +24,11 @@ export default function InfluencerPageComponent() {
 
     // Debugging: Log influencer data
     useEffect(() => {
+        console.log("LOcation state:", location.state);
+        console.log("Stored data:".localStorage.getItem("selectedInfluencer"))
+    }, [location.state]);
+
+    useEffect(() => {
         console.log("Updated influencer state:", influencer);
     }, [influencer]);
 
@@ -54,7 +59,7 @@ export default function InfluencerPageComponent() {
                             influencer.categories.map((category, index) => (
                                 <button
                                     key={index}
-                                    className="px-3 py-1 mr-4 bg-[#182130] text-white rounded-full text-xs"
+                                    className="px-3 py-1 mr-4 !bg-[#182130] text-white !rounded-full !text-xs/3"
                                 >
                                     {category}
                                 </button>
