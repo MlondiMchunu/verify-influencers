@@ -75,7 +75,7 @@ export default function InfluencerPageComponent() {
                     {/* Yearly Revenue */}
                     <div className="p-4 bg-[#182130] rounded-lg text-left">
                         <p className="text-xs font-bold text-white text-left">Yearly Revenue</p>
-                        <p className="text-lg font-bold text-[#14b983] ">{influencer.yearlyRevenue}%</p>
+                        <p className="text-lg font-bold text-[#14b983] ">${influencer.yearlyRevenue}</p>
                         <p className="text-xs/2  text-gray-400 mt-2">Estimated earnings</p>
 
                     </div>
