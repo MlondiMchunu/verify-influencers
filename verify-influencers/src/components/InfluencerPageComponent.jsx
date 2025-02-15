@@ -12,6 +12,8 @@ export default function InfluencerPageComponent() {
     const parseData = storedData ? JSON.parse(storedData) : null;
     let influencer = location.state?.influencer || parseData;
 
+    console.log("REceived influencer data: ", influencer);
+
     if (!influencer) {
         if (storedData) {
             influencer = JSON.parse(storedData)
