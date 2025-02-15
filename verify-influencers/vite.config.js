@@ -14,5 +14,8 @@ export default defineConfig({
       external:['./lucide-react']
     },
   },
+  define:{
+    "process.env":process.env,
+  },
   
 });
