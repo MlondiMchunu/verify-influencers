@@ -9,13 +9,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  build:{
-    rollupOptions:{
-      external:['./lucide-react']
+  build: {
+    rollupOptions: {
+      external: ['./lucide-react']
     },
   },
-  define:{
-    "process.env":process.env,
+  define: {
+    "process.env": process.env,
   },
-  
+
 });

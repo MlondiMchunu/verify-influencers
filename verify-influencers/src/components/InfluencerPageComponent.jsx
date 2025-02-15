@@ -6,10 +6,13 @@ export default function InfluencerPageComponent() {
 
 
     const location = useLocation();
-    let influencer = location.state?.influencer;
 
-    if (!InfluencerPageComponent) {
-        const storedData = localStorage.getItem("selectedInfluencer");
+    //retrieve influencer data from local storage
+    const storedData = localStorage.getItem("selectedInfluencer");
+    const parseData = storedData ? JSON.parse(storedData) : null;
+    let influencer = location.state?.influencer || parseData;
+
+    if (!influencer) {
         if (storedData) {
             influencer = JSON.parse(storedData)
         }
